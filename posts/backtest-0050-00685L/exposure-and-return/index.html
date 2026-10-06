@@ -1,0 +1,1380 @@
+
+<!doctype html>
+<html lang="zh-Hant" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="個人投資、理財與股票的相關筆記">
+      
+      
+      
+        <link rel="canonical" href="https://pepelepew71.github.io/my-stock-blog/posts/backtest-0050-00685L/exposure-and-return/">
+      
+      
+        <link rel="prev" href="../method/">
+      
+      
+        <link rel="next" href="../five-year-windows/">
+      
+      
+        
+      
+      
+      
+      
+        
+        
+        
+          <link rel="icon" href="../../../assets/images/favicon.png">
+        
+      
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-materialx-10.2.0">
+    
+    
+      
+        <title>平均曝險決定長期報酬 - Pewren 的投資筆記</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d7aee198.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a45159b5.min.css">
+      
+    
+    
+
+    
+
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans TC";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/fonts/material-icons.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/shift-away.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/scale.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/backdrop.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/light.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/tippy.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/material.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/core/core.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" data-mx-topbar="glass">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="toc" type="checkbox" id="__toc" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <label class="md-overlay" for="__toc"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#平均曝險決定長期報酬" class="md-skip">
+          跳轉至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="頁首">
+    <a href="../../.." title="Pewren 的投資筆記" class="md-header__button md-logo" aria-label="Pewren 的投資筆記" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Pewren 的投資筆記
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              平均曝險決定長期報酬
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.25 2a8.25 8.25 0 0 1 6.34 13.53l5.69 5.69a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215l-5.69-5.69A8.25 8.25 0 1 1 10.25 2M3.5 10.25a6.75 6.75 0 1 0 13.5 0 6.75 6.75 0 0 0-13.5 0"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜尋" placeholder="搜尋" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.25 2a8.25 8.25 0 0 1 6.34 13.53l5.69 5.69a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215l-5.69-5.69A8.25 8.25 0 1 1 10.25 2M3.5 10.25a6.75 6.75 0 1 0 13.5 0 6.75 6.75 0 0 0-13.5 0"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="搜尋">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.5a3.498 3.498 0 0 1-6.062 2.385l-5.112 3.021a3.5 3.5 0 0 1 0 2.188l5.112 3.021a3.5 3.5 0 1 1-.764 1.29l-5.112-3.02a3.499 3.499 0 1 1-3.843-5.642 3.5 3.5 0 0 1 3.843.872l5.112-3.021A3.5 3.5 0 1 1 20 5.5m-1.5 13a2 2 0 1 0-3.999-.001 2 2 0 0 0 3.999.001m0-13a2 2 0 1 0-3.999-.001A2 2 0 0 0 18.5 5.5M5.5 14a2 2 0 1 0 .001-3.999A2 2 0 0 0 5.5 14"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空" aria-label="清空" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0">
+        <div class="md-search-result md-search-result--pagefind" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜尋引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="標籤頁" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  免責聲明
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  文章
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tags/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  標籤
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="導航" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Pewren 的投資筆記" class="md-nav__button md-logo" aria-label="Pewren 的投資筆記" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"/></svg>
+
+    </a>
+    Pewren 的投資筆記
+  </label>
+  
+  <ul class="md-nav__list">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    免責聲明
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文章
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    文章
+  
+
+          </label>
+          <ul class="md-nav__list">
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0050 與 00685L 回測
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    0050 與 00685L 回測
+  
+
+          </label>
+          <ul class="md-nav__list">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../method/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    回測設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    平均曝險決定長期報酬
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    平均曝險決定長期報酬
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc">
+      
+        <li class="md-nav__item">
+  <a href="#總表" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        總表
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cagr-與最大回撤都隨平均曝險上升" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CAGR 與最大回撤都隨平均曝險上升
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#平均曝險可以排序-cagr但不是絕對" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        平均曝險可以排序 CAGR，但不是絕對
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sharpe-與-calmar-幾乎不隨曝險改變" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sharpe 與 Calmar 幾乎不隨曝險改變
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#再平衡縮短的是套牢時間" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        再平衡縮短的是套牢時間
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../five-year-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    換成 5 年來看
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../takeaways/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    心得
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix-results/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附錄：完整回測結果
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix-data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附錄：資料製作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    標籤
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc">
+      
+        <li class="md-nav__item">
+  <a href="#總表" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        總表
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cagr-與最大回撤都隨平均曝險上升" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CAGR 與最大回撤都隨平均曝險上升
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#平均曝險可以排序-cagr但不是絕對" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        平均曝險可以排序 CAGR，但不是絕對
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sharpe-與-calmar-幾乎不隨曝險改變" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sharpe 與 Calmar 幾乎不隨曝險改變
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#再平衡縮短的是套牢時間" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        再平衡縮短的是套牢時間
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="導航" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    免責聲明
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    文章
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    0050 與 00685L 回測
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              
+              
+              <article class="md-content__inner md-typeset" data-pagefind-body>
+                
+                  
+
+<h1 id="平均曝險決定長期報酬">平均曝險決定長期報酬<a class="headerlink" href="#平均曝險決定長期報酬" title="本節的固定連結">&para;</a></h1>
+<div class='document-dates-plugin-wrapper document-dates-top'><div class='document-dates-plugin' locale='zh_TW'><div class='dd-left'><span class='dd-item' data-tippy-content data-tippy-raw='2026-10-01'><span class='material-icons' data-icon='doc_created'></span><time datetime='2026-10-01T00:00:00+08:00'>2026-10-01</time></span><span class='dd-item' data-tippy-content data-tippy-raw='2026-10-01'><span class='material-icons' data-icon='doc_updated'></span><time datetime='2026-10-01T00:00:00+08:00'>2026-10-01</time></span></div></div></div>
+
+<p>把 12 個策略的全期間回測結果（2004-01 ~ 2026-09）整理成一張表，依平均曝險由低到高排列，觀察曝險比率和各項績效、風險指標之間的關係。</p>
+<p>曝險比率、策略規則與指標定義見 <a href="../method/">回測設計</a>，各策略的原始結果見 <a href="../appendix-results/">附錄：完整回測結果</a>。</p>
+<hr />
+<h2 id="總表">總表<a class="headerlink" href="#總表" title="本節的固定連結">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>策略</th>
+<th>平均曝險</th>
+<th>CAGR</th>
+<th>最大回撤</th>
+<th>回撤持續（月）</th>
+<th>Ulcer Index</th>
+<th>年化波動率</th>
+<th>Sharpe</th>
+<th>Calmar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0050-ADJ 二組件再平衡</td>
+<td>52.9%</td>
+<td>7.79%</td>
+<td>30.47%</td>
+<td>36</td>
+<td>6.34%</td>
+<td>10.21%</td>
+<td>0.788</td>
+<td>0.256</td>
+</tr>
+<tr>
+<td>0050-ADJ 二組件不再平衡</td>
+<td>68.3%</td>
+<td>10.78%</td>
+<td>33.82%</td>
+<td>38</td>
+<td>8.18%</td>
+<td>14.15%</td>
+<td>0.795</td>
+<td>0.319</td>
+</tr>
+<tr>
+<td>0050-ADJ 全數持有</td>
+<td>100.0%</td>
+<td>13.96%</td>
+<td>53.96%</td>
+<td>38</td>
+<td>12.35%</td>
+<td>19.47%</td>
+<td>0.771</td>
+<td>0.259</td>
+</tr>
+<tr>
+<td>00685L-SIM 二組件再平衡</td>
+<td>106.4%</td>
+<td>14.31%</td>
+<td>54.42%</td>
+<td>37</td>
+<td>11.91%</td>
+<td>20.10%</td>
+<td>0.768</td>
+<td>0.263</td>
+</tr>
+<tr>
+<td>三組件 433 再平衡</td>
+<td>107.0%</td>
+<td>14.23%</td>
+<td>54.48%</td>
+<td>37</td>
+<td>12.75%</td>
+<td>20.26%</td>
+<td>0.760</td>
+<td>0.261</td>
+</tr>
+<tr>
+<td>三組件 442 再平衡</td>
+<td>127.2%</td>
+<td>16.83%</td>
+<td>61.05%</td>
+<td>37</td>
+<td>14.42%</td>
+<td>24.16%</td>
+<td>0.767</td>
+<td>0.276</td>
+</tr>
+<tr>
+<td>三組件 433 不再平衡</td>
+<td>131.7%</td>
+<td>17.85%</td>
+<td>58.13%</td>
+<td>79</td>
+<td>16.45%</td>
+<td>26.12%</td>
+<td>0.760</td>
+<td>0.307</td>
+</tr>
+<tr>
+<td>三組件 442 不再平衡</td>
+<td>146.2%</td>
+<td>19.09%</td>
+<td>64.43%</td>
+<td>79</td>
+<td>18.42%</td>
+<td>28.49%</td>
+<td>0.756</td>
+<td>0.296</td>
+</tr>
+<tr>
+<td>00685L-SIM 二組件不再平衡</td>
+<td>148.0%</td>
+<td>19.44%</td>
+<td>60.58%</td>
+<td>81</td>
+<td>19.11%</td>
+<td>29.31%</td>
+<td>0.752</td>
+<td>0.321</td>
+</tr>
+<tr>
+<td>0050-ADJ 57.1% + 00685L-SIM 42.9% 持有</td>
+<td>154.8%</td>
+<td>19.68%</td>
+<td>69.66%</td>
+<td>79</td>
+<td>19.39%</td>
+<td>29.87%</td>
+<td>0.752</td>
+<td>0.283</td>
+</tr>
+<tr>
+<td>0050-ADJ + 00685L-SIM 各半持有</td>
+<td>161.4%</td>
+<td>20.24%</td>
+<td>71.62%</td>
+<td>79</td>
+<td>20.31%</td>
+<td>31.07%</td>
+<td>0.750</td>
+<td>0.283</td>
+</tr>
+<tr>
+<td>00685L-SIM 全數持有</td>
+<td>200.0%</td>
+<td>23.10%</td>
+<td>82.20%</td>
+<td>81</td>
+<td>25.39%</td>
+<td>38.26%</td>
+<td>0.738</td>
+<td>0.281</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>「不再平衡」與兩個「持有」是曝險再平衡回測中的對照組，定義見 <a href="../method/#對照組">回測設計</a>。</li>
+<li>數值取自 2026-10-01 產生的回測結果，若有資料更新則需重新回測。</li>
+</ul>
+<hr />
+<h2 id="cagr-與最大回撤都隨平均曝險上升">CAGR 與最大回撤都隨平均曝險上升<a class="headerlink" href="#cagr-與最大回撤都隨平均曝險上升" title="本節的固定連結">&para;</a></h2>
+<iframe class="report" src="../assets/reports/exposure-scatter.html" title="平均曝險與 CAGR、最大回撤散點圖" loading="lazy"></iframe>
+
+<p>表中有兩組曝險接近、但做法完全不同的策略：</p>
+<table>
+<thead>
+<tr>
+<th>比較</th>
+<th>平均曝險</th>
+<th>CAGR</th>
+<th>最大回撤</th>
+<th>年化波動率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0050-ADJ 全數持有</td>
+<td>100.0%</td>
+<td>13.96%</td>
+<td>53.96%</td>
+<td>19.47%</td>
+</tr>
+<tr>
+<td>00685L-SIM 50% + 現金再平衡</td>
+<td>106.4%</td>
+<td>14.31%</td>
+<td>54.42%</td>
+<td>20.10%</td>
+</tr>
+<tr>
+<td>三組件 433 再平衡</td>
+<td>107.0%</td>
+<td>14.23%</td>
+<td>54.48%</td>
+<td>20.26%</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>比較</th>
+<th>平均曝險</th>
+<th>CAGR</th>
+<th>最大回撤</th>
+<th>年化波動率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>三組件 442 不再平衡</td>
+<td>146.2%</td>
+<td>19.09%</td>
+<td>64.43%</td>
+<td>28.49%</td>
+</tr>
+<tr>
+<td>00685L-SIM 50% + 現金不再平衡</td>
+<td>148.0%</td>
+<td>19.44%</td>
+<td>60.58%</td>
+<td>29.31%</td>
+</tr>
+</tbody>
+</table>
+<p>第一組是三種完全不同的做法：只買原型 ETF、槓桿 ETF 加現金、兩者加現金。三者的 CAGR、最大回撤與波動率都幾乎相同。其中三組件 433 同時持有 0050-ADJ 與 00685L-SIM，這組對照因此不完全是兩個指數之間的比較。</p>
+<p>決定獲利的是實際持有期間的平均曝險，而不是起始配置。同樣從 00685L-SIM 50% 加現金 50% 開始，有再平衡時的平均曝險為 106.4%，此時的 CAGR 為 14.31%；當不再平衡時，則曝險會隨時間往上漂移到 148.0%，此時的 CAGR 會變成 19.44%。</p>
+<p>不過這是 22 年下來的結果。拆成 5 年區間來看，0050 全數持有與 00685L-SIM 二組件的差距常達 2 ~ 4 個百分點，見 <a href="../five-year-windows/#曝險相近策略的逐區間-cagr-比較">換成 5 年來看</a>。</p>
+<hr />
+<h2 id="平均曝險可以排序-cagr但不是絕對">平均曝險可以排序 CAGR，但不是絕對<a class="headerlink" href="#平均曝險可以排序-cagr但不是絕對" title="本節的固定連結">&para;</a></h2>
+<p>依平均曝險由低到高排列，12 個策略的 CAGR 幾乎單調遞增。唯一的例外是 00685L-SIM 二組件再平衡（106.4%，14.31%）與三組件 433 再平衡（107.0%，14.23%），兩者曝險只差 0.6 個百分點，CAGR 只差 0.08 個百分點，可以視為相同。</p>
+<hr />
+<h2 id="sharpe-與-calmar-幾乎不隨曝險改變">Sharpe 與 Calmar 幾乎不隨曝險改變<a class="headerlink" href="#sharpe-與-calmar-幾乎不隨曝險改變" title="本節的固定連結">&para;</a></h2>
+<p>平均曝險從 52.9% 到 200%，Sharpe 都落在 0.74 ~ 0.80，Calmar 落在 0.26 ~ 0.32。各種配置並沒有提高 <strong>單位風險</strong> 能換到的報酬，所以主要差別就只在願意承擔多少風險。</p>
+<p>Sharpe 隨曝險緩慢下降（0.79 降到 0.74），可能來自槓桿的波動耗損。</p>
+<hr />
+<h2 id="再平衡縮短的是套牢時間">再平衡縮短的是套牢時間<a class="headerlink" href="#再平衡縮短的是套牢時間" title="本節的固定連結">&para;</a></h2>
+<p>曝險相同時，操作本身並不會改變回撤深度與波動率，但會改變回撤持續的時間。最大回撤持續期間分成兩群：</p>
+<ul>
+<li><strong>36 ~ 38 個月</strong>：所有再平衡策略，以及只含 0050-ADJ 的策略，平均曝險從 52.9% 到 127.2%。</li>
+<li><strong>79 ~ 81 個月</strong>：含 00685L-SIM 且不再平衡的策略，平均曝險從 131.7% 到 200%。</li>
+</ul>
+<p>分群的關鍵不是平均曝險。三組件 442 再平衡（127.2%）與三組件 433 不再平衡（131.7%）的平均曝險相近，最大回撤也相近（61.05% 對 58.13%），回撤持續期間卻是 37 個月對 79 個月。</p>
+<p>所以差別在於曝險的路徑。以三組件 433 為例，從 2007-10 高點起算：</p>
+<table>
+<thead>
+<tr>
+<th>時點</th>
+<th>再平衡曝險</th>
+<th>不再平衡曝險</th>
+<th>再平衡淨值／高點</th>
+<th>不再平衡淨值／高點</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2007-10（高點）</td>
+<td>107%</td>
+<td>130%</td>
+<td>1.00</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>2008-12（谷底附近）</td>
+<td>96%</td>
+<td>85%</td>
+<td>0.49</td>
+<td>0.45</td>
+</tr>
+<tr>
+<td>2010-06</td>
+<td>102%</td>
+<td>110%</td>
+<td>0.78</td>
+<td>0.68</td>
+</tr>
+<tr>
+<td>2014-06</td>
+<td>100%</td>
+<td>127%</td>
+<td>1.18</td>
+<td>1.05</td>
+</tr>
+</tbody>
+</table>
+<p>不再平衡的組合在高點時曝險最高，發生崩盤後 00685L-SIM 部位大幅縮水，曝險跌到 85%，反彈時能拉回的幅度較小。再平衡則在低點把曝險買回目標值。結果再平衡在 2010-12 回本，不再平衡要到 2014-06。</p>
+<p>換個角度看，不再平衡的組合在跌深時不會主動加碼，回本時間被回本最慢的成分拖住。00685L-SIM 本身要到 2014-08 才回本，所以含它的不再平衡組合都在 2014-06 ~ 2014-08 才回本。只含 0050-ADJ 的不再平衡組合，則和 0050-ADJ 一起在 2011-01 回本。</p>
+<div class="admonition warning">
+<p class="admonition-title">崩盤樣本只有一個</p>
+<p>這 12 個數值都來自同一次回撤：2007-10 的海嘯前高點。全期間只有這一個樣本，這項指標的比較主要反映金融海嘯這一個事件。</p>
+</div>
+
+
+
+
+
+
+
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:0050" class="md-tag md-tag-icon">0050</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:00685l" class="md-tag md-tag-icon">00685L</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:回測" class="md-tag md-tag-icon">回測</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:槓桿-etf" class="md-tag md-tag-icon">槓桿 ETF</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:資產配置" class="md-tag md-tag-icon">資產配置</a>
+      
+    
+  </nav>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+          <div class="md-top" data-md-component="top" hidden>
+  <div class="md-top__center">
+    <button type="button" class="md-top__button md-top__button--main" data-md-action="top">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+      <span>回到頂部</span>
+    </button>
+    
+      
+      
+      <label class="md-top__button md-top__side md-top__side--nav" for="__drawer" >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-panel-left" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg>
+      </label>
+    
+    
+      
+      
+      <label class="md-top__button md-top__side md-top__side--toc" for="__toc" >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-panel-right" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M15 3v18"/></svg>
+      </label>
+    
+  </div>
+</div>
+      </main>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+          
+          
+        
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "code": null, "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.path", "navigation.top", "navigation.tracking", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tooltips"], "search": {"options": {"baseUrl": "../../..", "bundleUrl": "../../../search/", "highlight": true, "searchOptions": {}}, "provider": "pagefind"}, "tags": null, "translations": {"clipboard.copied": "\u5df2\u62f7\u8c9d", "clipboard.copy": "\u62f7\u8c9d", "code.collapse": "\u6536\u8d77", "code.download": "\u4e0b\u8f09", "code.expand": "\u5c55\u958b\u5269\u4f59 # \u884c", "code.select": "\u5207\u63db\u884c\u9078\u64c7", "search.offline": "\u96e2\u7dda\u641c\u5c0b\u8acb\u5207\u63db\u5230 Lunr", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u627e\u5230\u7b26\u5408\u689d\u4ef6\u7684\u7d50\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u689d\u4ef6\u7684\u7d50\u679c", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u689d\u4ef6\u7684\u7d50\u679c", "search.result.placeholder": "\u9375\u5165\u4ee5\u958b\u59cb\u6aa2\u7d22", "search.result.term.missing": "\u7f3a\u5931", "select.version": "\u9078\u64c7\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.44453a05.min.js"></script>
+      
+        <script src="../../../javascripts/report-iframe.js"></script>
+      
+        <script src="../../../assets/document_dates/tippy/popper.min.js"></script>
+      
+        <script src="../../../assets/document_dates/tippy/tippy.umd.min.js"></script>
+      
+        <script src="../../../assets/document_dates/core/md5.min.js"></script>
+      
+        <script src="../../../assets/document_dates/core/default.config.js"></script>
+      
+        <script src="../../../assets/document_dates/core/utils.js"></script>
+      
+        <script src="../../../assets/document_dates/core/core.js"></script>
+      
+    
+  </body>
+</html>

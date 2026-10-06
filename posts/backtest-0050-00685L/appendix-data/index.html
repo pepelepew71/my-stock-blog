@@ -1,0 +1,1440 @@
+
+<!doctype html>
+<html lang="zh-Hant" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="個人投資、理財與股票的相關筆記">
+      
+      
+      
+        <link rel="canonical" href="https://pepelepew71.github.io/my-stock-blog/posts/backtest-0050-00685L/appendix-data/">
+      
+      
+        <link rel="prev" href="../appendix-results/">
+      
+      
+        <link rel="next" href="../../../tags/">
+      
+      
+        
+      
+      
+      
+      
+        
+        
+        
+          <link rel="icon" href="../../../assets/images/favicon.png">
+        
+      
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-materialx-10.2.0">
+    
+    
+      
+        <title>附錄：0050-ADJ 與 00685L-SIM 資料製作 - Pewren 的投資筆記</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d7aee198.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a45159b5.min.css">
+      
+    
+    
+
+    
+
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans TC";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/fonts/material-icons.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/shift-away.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/scale.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/backdrop.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/light.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/tippy.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/material.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/core/core.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" data-mx-topbar="glass">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="toc" type="checkbox" id="__toc" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <label class="md-overlay" for="__toc"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#附錄0050-adj-與-00685l-sim-資料製作" class="md-skip">
+          跳轉至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="頁首">
+    <a href="../../.." title="Pewren 的投資筆記" class="md-header__button md-logo" aria-label="Pewren 的投資筆記" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Pewren 的投資筆記
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              附錄：0050-ADJ 與 00685L-SIM 資料製作
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.25 2a8.25 8.25 0 0 1 6.34 13.53l5.69 5.69a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215l-5.69-5.69A8.25 8.25 0 1 1 10.25 2M3.5 10.25a6.75 6.75 0 1 0 13.5 0 6.75 6.75 0 0 0-13.5 0"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜尋" placeholder="搜尋" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.25 2a8.25 8.25 0 0 1 6.34 13.53l5.69 5.69a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215l-5.69-5.69A8.25 8.25 0 1 1 10.25 2M3.5 10.25a6.75 6.75 0 1 0 13.5 0 6.75 6.75 0 0 0-13.5 0"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="搜尋">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.5a3.498 3.498 0 0 1-6.062 2.385l-5.112 3.021a3.5 3.5 0 0 1 0 2.188l5.112 3.021a3.5 3.5 0 1 1-.764 1.29l-5.112-3.02a3.499 3.499 0 1 1-3.843-5.642 3.5 3.5 0 0 1 3.843.872l5.112-3.021A3.5 3.5 0 1 1 20 5.5m-1.5 13a2 2 0 1 0-3.999-.001 2 2 0 0 0 3.999.001m0-13a2 2 0 1 0-3.999-.001A2 2 0 0 0 18.5 5.5M5.5 14a2 2 0 1 0 .001-3.999A2 2 0 0 0 5.5 14"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空" aria-label="清空" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0">
+        <div class="md-search-result md-search-result--pagefind" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜尋引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="標籤頁" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  免責聲明
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  文章
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tags/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  標籤
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="導航" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Pewren 的投資筆記" class="md-nav__button md-logo" aria-label="Pewren 的投資筆記" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"/></svg>
+
+    </a>
+    Pewren 的投資筆記
+  </label>
+  
+  <ul class="md-nav__list">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    免責聲明
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文章
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    文章
+  
+
+          </label>
+          <ul class="md-nav__list">
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0050 與 00685L 回測
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    0050 與 00685L 回測
+  
+
+          </label>
+          <ul class="md-nav__list">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../method/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    回測設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exposure-and-return/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    平均曝險決定長期報酬
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../five-year-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    換成 5 年來看
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../takeaways/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    心得
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix-results/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附錄：完整回測結果
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附錄：資料製作
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附錄：資料製作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc">
+      
+        <li class="md-nav__item">
+  <a href="#基本概念" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基本概念
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="基本概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#為什麼以證交所為主要來源" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        為什麼以證交所為主要來源
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#取月底收盤" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        取月底收盤
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#抓取原則" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        抓取原則
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#還原加權指數-發行量加權股價報酬指數" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        還原加權指數 (發行量加權股價報酬指數)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0050--00685l" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0050 &amp; 00685L
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0050 &amp; 00685L">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#還原的概念" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        還原的概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#還原價的意義" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        還原價的意義
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#增量更新" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        增量更新
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#00685l-sim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        00685L-SIM
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="00685L-SIM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#模型" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#為什麼用含息大盤" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        為什麼用含息大盤
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#成本的校準" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        成本的校準
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#拼接" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        拼接
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#限制" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        限制
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#圖表" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        圖表
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    標籤
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc">
+      
+        <li class="md-nav__item">
+  <a href="#基本概念" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基本概念
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="基本概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#為什麼以證交所為主要來源" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        為什麼以證交所為主要來源
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#取月底收盤" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        取月底收盤
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#抓取原則" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        抓取原則
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#還原加權指數-發行量加權股價報酬指數" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        還原加權指數 (發行量加權股價報酬指數)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0050--00685l" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0050 &amp; 00685L
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0050 &amp; 00685L">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#還原的概念" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        還原的概念
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#還原價的意義" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        還原價的意義
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#增量更新" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        增量更新
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#00685l-sim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        00685L-SIM
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="00685L-SIM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#模型" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#為什麼用含息大盤" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        為什麼用含息大盤
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#成本的校準" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        成本的校準
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#拼接" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        拼接
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#限制" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        限制
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#圖表" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        圖表
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="導航" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    免責聲明
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    文章
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    0050 與 00685L 回測
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              
+              
+              <article class="md-content__inner md-typeset" data-pagefind-body>
+                
+                  
+
+<h1 id="附錄0050-adj-與-00685l-sim-資料製作">附錄：0050-ADJ 與 00685L-SIM 資料製作<a class="headerlink" href="#附錄0050-adj-與-00685l-sim-資料製作" title="本節的固定連結">&para;</a></h1>
+<div class='document-dates-plugin-wrapper document-dates-top'><div class='document-dates-plugin' locale='zh_TW'><div class='dd-left'><span class='dd-item' data-tippy-content data-tippy-raw='2026-09-30'><span class='material-icons' data-icon='doc_created'></span><time datetime='2026-09-30T00:00:00+08:00'>2026-09-30</time></span><span class='dd-item' data-tippy-content data-tippy-raw='2026-10-06'><span class='material-icons' data-icon='doc_updated'></span><time datetime='2026-10-06T00:00:00+08:00'>2026-10-06</time></span></div></div></div>
+
+<p>整理從臺灣證券交易所（TWSE）抓取月頻歷史價格的概念，包含含息大盤指數、0050 與 00685L 的還原價，以及用含息大盤回推 00685L 上市前價格（00685L-SIM）的做法。目的是取得一條可以直接計算<strong>含息總報酬</strong>的月價格序列，作為後續回測與計算報酬、波動率的基礎。</p>
+<p>整理後的月價格資料可參考 <a href="https://docs.google.com/spreadsheets/d/1v1rACxQscnkHCPYUXWJfJ6OuJLYbRODk03tZJ6GeZYA/edit?usp=sharing">Google Sheet</a>。</p>
+<hr />
+<h2 id="基本概念">基本概念<a class="headerlink" href="#基本概念" title="本節的固定連結">&para;</a></h2>
+<h3 id="為什麼以證交所為主要來源">為什麼以證交所為主要來源<a class="headerlink" href="#為什麼以證交所為主要來源" title="本節的固定連結">&para;</a></h3>
+<p>Yahoo Finance 雖然方便，一次請求就能拿到全部月線，但以 0050 逐月比對後發現，其還原資料有漏還原配息、配息未依分割調整、個別月份收盤價錯誤等問題。而證交所提供的是官方收盤價與官方的除權息、分割資料，自行還原後的結果較可靠。因此台股上市標的以證交所為準，Yahoo 只用來補充證交所抓不到的標的（上櫃、海外）。</p>
+<h3 id="取月底收盤">取月底收盤<a class="headerlink" href="#取月底收盤" title="本節的固定連結">&para;</a></h3>
+<p>由於我的回測只打算使用月頻資料，所以每個月只取<strong>最後一個有成交的交易日收盤</strong>作為當月價格。兩個月份的價格相除即為該月報酬。尚未結束的當月一律排除，避免拿到不完整的資料。</p>
+<h3 id="抓取原則">抓取原則<a class="headerlink" href="#抓取原則" title="本節的固定連結">&para;</a></h3>
+<ul>
+<li><strong>不需要認證</strong>：證交所的 API 都是直接的 GET 請求，不像 Yahoo 需要先取得 cookie 與 crumb。</li>
+<li><strong>放慢速度</strong>：多數 API 一次只能查一個月，抓 20 年就要兩百多次請求。證交所會暫時封鎖請求過於頻繁的 IP，因此每次請求之間間隔數秒，失敗時退避重試。</li>
+<li><strong>成功與否看回應內容</strong>：查無資料或日期超出範圍時，HTTP 狀態仍是 200，錯誤原因寫在 JSON 的狀態欄位中，不能只看 HTTP 狀態碼。</li>
+<li><strong>格式轉換</strong>：日期為民國年、數值帶千分位逗號，需要轉成西元與數字。</li>
+</ul>
+<hr />
+<h2 id="還原加權指數-發行量加權股價報酬指數">還原加權指數 (發行量加權股價報酬指數)<a class="headerlink" href="#還原加權指數-發行量加權股價報酬指數" title="本節的固定連結">&para;</a></h2>
+<p>一般常見的「加權指數」（TAIEX，Yahoo 上的 <code>^TWII</code>）是<strong>價格指數</strong>，成分股配息時指數會下跌，不反映股利再投入，長期下來會明顯低估大盤的實際報酬。</p>
+<p>證交所另外編製「<strong>發行量加權股價報酬指數</strong>」，把現金股利視為再投入，也就是俗稱的<strong>含息大盤</strong>或還原加權指數。這個指數本身已經含息，所以抓下來後<strong>不需要再做任何還原</strong>，直接取每月最後一個交易日的指數值即可。</p>
+<p>要點：</p>
+<ul>
+<li>證交所的報酬指數最早只到 <strong>2003-01</strong>，更早的月份查不到，這也是整條資料的起點。</li>
+<li>它是衡量「台股大盤含息報酬」的基準，也是後續模擬 00685L 的依據。</li>
+</ul>
+<hr />
+<h2 id="0050--00685l">0050 &amp; 00685L<a class="headerlink" href="#0050--00685l" title="本節的固定連結">&para;</a></h2>
+<p>0050、00685L 這類 ETF 與個股的處理方式相同：證交所只提供<strong>原始收盤價</strong>，除權息、分割造成的價格跳動需要自己還原。</p>
+<h3 id="還原的概念">還原的概念<a class="headerlink" href="#還原的概念" title="本節的固定連結">&para;</a></h3>
+<p>除權息或分割時，股價會從「事件前收盤價」跳到「參考價」，但投資人的資產價值並沒有真的減少（配息拿到現金，分割拿到更多股數）。如果直接用原始收盤計算報酬，這些日子會出現一筆假的虧損。</p>
+<p>還原的做法是把每個事件換算成一個<strong>還原因子</strong>：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>還原因子 = 參考價 / 事件前收盤價
+</span></code></pre></div>
+<p>每個月的還原價 = 該月原始收盤 × 之後所有事件的還原因子相乘。證交所分別公布除權息、減資、變更面額（個股分割）、ETF 分割四種事件，四者都有「前收盤價」與「參考價」，可以用同一個公式處理。例如 0050 在 2025-06 進行 1 拆 4 分割，還原因子即為 0.25；00685L 在 2026-07 也有 1 拆 24 的分割。</p>
+<h3 id="還原價的意義">還原價的意義<a class="headerlink" href="#還原價的意義" title="本節的固定連結">&para;</a></h3>
+<ul>
+<li>以<strong>最新月份</strong>為基準，最新月份的還原價等於實際收盤，越早的月份被往下調得越多。</li>
+<li><strong>單看某個月的數字沒有意義，只有比值有意義</strong>。兩個月份相除就是這段期間的含息報酬，並假設股利發放當下全部再投入。</li>
+<li>之後每出現一次新的配息或分割，所有舊月份都會再乘上新的因子，數值會改變，但月報酬不變。不同時間產生的資料不要混用。</li>
+</ul>
+<h3 id="增量更新">增量更新<a class="headerlink" href="#增量更新" title="本節的固定連結">&para;</a></h3>
+<p>還原價只由兩樣東西決定：過去月份的原始收盤（不會再變），以及事件清單（新事件只會加在後面）。只要把這兩樣原始資料保存下來，之後每個月只需補抓新的月份與新事件，再重新計算一次，結果就和從頭抓取完全相同，不必每次重抓 20 年的資料。</p>
+<hr />
+<h2 id="00685l-sim">00685L-SIM<a class="headerlink" href="#00685l-sim" title="本節的固定連結">&para;</a></h2>
+<p>00685L（群益臺灣加權正2）從 2017-03 才上市，資料太短，看不到 2008 年金融海嘯等較早的市況。00685L-SIM 是用含息大盤往前回推一段<strong>模擬的正 2 月價格</strong>，再和實際資料拼成一條從 2003 年開始的較長序列。目標是大致合理，不追求精確重現每日重新平衡的結果。</p>
+<h3 id="模型">模型<a class="headerlink" href="#模型" title="本節的固定連結">&para;</a></h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>模擬月報酬 = 槓桿倍數 × 含息大盤月報酬 − 年化成本 / 12
+</span></code></pre></div>
+<ul>
+<li><strong>槓桿倍數</strong>為 2。</li>
+<li><strong>年化成本</strong>是總拖累的淨額，包含經理費、保管費、轉倉成本，扣掉保證金利息收入。</li>
+</ul>
+<h3 id="為什麼用含息大盤">為什麼用含息大盤<a class="headerlink" href="#為什麼用含息大盤" title="本節的固定連結">&para;</a></h3>
+<p>正 2 ETF 主要以期貨取得曝險，而期貨價格已經先扣掉預期股利，所以正 2 的報酬近似於「2 倍的含息報酬減去利率與費用」，而不是「2 倍的價格指數報酬」。用價格指數回推會低估報酬。</p>
+<h3 id="成本的校準">成本的校準<a class="headerlink" href="#成本的校準" title="本節的固定連結">&para;</a></h3>
+<p>年化成本不是憑空假設，而是用 00685L 上市後與含息大盤重疊的期間校準：找出讓模擬值與實際值期末累積報酬吻合的成本，約為每年 0.67%。同時檢查每月 00685L 報酬對含息大盤報酬的迴歸 beta 約為 2，確認模型成立。資料更新後可以重新校準，檢查成本是否需要調整。</p>
+<h3 id="拼接">拼接<a class="headerlink" href="#拼接" title="本節的固定連結">&para;</a></h3>
+<ol>
+<li>從含息大盤的第一個月（2003-01）起算出模擬淨值。</li>
+<li>把模擬序列等比例縮放，讓它在 00685L 上市第一個月的價格和實際價格相同。</li>
+<li>上市以前用模擬值，上市以後用實際值，拼接點前後的報酬不會跳空。</li>
+</ol>
+<h3 id="限制">限制<a class="headerlink" href="#限制" title="本節的固定連結">&para;</a></h3>
+<ul>
+<li><strong>單一成本</strong>：2003～2008 年台灣利率較高，理論上那段期間的拖累應該比近年大，但模型只用一個固定成本。</li>
+<li><strong>月頻看不到月內波動</strong>：槓桿 ETF 每日重新平衡，在震盪或連續重挫時會有波動耗損，月頻模擬看不到這部分，模擬出的最大回撤會偏樂觀。</li>
+<li><strong>只適用於追蹤加權指數的正 2</strong>：若要模擬其他槓桿 ETF（例如追蹤台灣 50 指數的 00631L），需改用它所追蹤指數的含息版本，並重新校準成本。</li>
+</ul>
+<hr />
+<h2 id="圖表">圖表<a class="headerlink" href="#圖表" title="本節的固定連結">&para;</a></h2>
+<p>0050-ADJ、00685L-SIM 與 TAIEX 的還原價、原始價與模擬價折線圖如下：</p>
+<iframe class="report" src="../assets/reports/prices.html" title="三種資料折線圖" loading="lazy"></iframe>
+
+
+
+
+
+
+
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:0050" class="md-tag md-tag-icon">0050</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:00685l" class="md-tag md-tag-icon">00685L</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:回測" class="md-tag md-tag-icon">回測</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:槓桿-etf" class="md-tag md-tag-icon">槓桿 ETF</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:資產配置" class="md-tag md-tag-icon">資產配置</a>
+      
+    
+  </nav>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+          <div class="md-top" data-md-component="top" hidden>
+  <div class="md-top__center">
+    <button type="button" class="md-top__button md-top__button--main" data-md-action="top">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+      <span>回到頂部</span>
+    </button>
+    
+      
+      
+      <label class="md-top__button md-top__side md-top__side--nav" for="__drawer" >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-panel-left" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg>
+      </label>
+    
+    
+      
+      
+      <label class="md-top__button md-top__side md-top__side--toc" for="__toc" >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-panel-right" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M15 3v18"/></svg>
+      </label>
+    
+  </div>
+</div>
+      </main>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+          
+          
+        
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "code": null, "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.path", "navigation.top", "navigation.tracking", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tooltips"], "search": {"options": {"baseUrl": "../../..", "bundleUrl": "../../../search/", "highlight": true, "searchOptions": {}}, "provider": "pagefind"}, "tags": null, "translations": {"clipboard.copied": "\u5df2\u62f7\u8c9d", "clipboard.copy": "\u62f7\u8c9d", "code.collapse": "\u6536\u8d77", "code.download": "\u4e0b\u8f09", "code.expand": "\u5c55\u958b\u5269\u4f59 # \u884c", "code.select": "\u5207\u63db\u884c\u9078\u64c7", "search.offline": "\u96e2\u7dda\u641c\u5c0b\u8acb\u5207\u63db\u5230 Lunr", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u627e\u5230\u7b26\u5408\u689d\u4ef6\u7684\u7d50\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u689d\u4ef6\u7684\u7d50\u679c", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u689d\u4ef6\u7684\u7d50\u679c", "search.result.placeholder": "\u9375\u5165\u4ee5\u958b\u59cb\u6aa2\u7d22", "search.result.term.missing": "\u7f3a\u5931", "select.version": "\u9078\u64c7\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.44453a05.min.js"></script>
+      
+        <script src="../../../javascripts/report-iframe.js"></script>
+      
+        <script src="../../../assets/document_dates/tippy/popper.min.js"></script>
+      
+        <script src="../../../assets/document_dates/tippy/tippy.umd.min.js"></script>
+      
+        <script src="../../../assets/document_dates/core/md5.min.js"></script>
+      
+        <script src="../../../assets/document_dates/core/default.config.js"></script>
+      
+        <script src="../../../assets/document_dates/core/utils.js"></script>
+      
+        <script src="../../../assets/document_dates/core/core.js"></script>
+      
+    
+  </body>
+</html>

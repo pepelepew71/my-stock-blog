@@ -1,0 +1,1643 @@
+
+<!doctype html>
+<html lang="zh-Hant" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="個人投資、理財與股票的相關筆記">
+      
+      
+      
+        <link rel="canonical" href="https://pepelepew71.github.io/my-stock-blog/posts/backtest-0050-00685L/five-year-windows/">
+      
+      
+        <link rel="prev" href="../exposure-and-return/">
+      
+      
+        <link rel="next" href="../takeaways/">
+      
+      
+        
+      
+      
+      
+      
+        
+        
+        
+          <link rel="icon" href="../../../assets/images/favicon.png">
+        
+      
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-materialx-10.2.0">
+    
+    
+      
+        <title>換成 5 年來看 - Pewren 的投資筆記</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d7aee198.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a45159b5.min.css">
+      
+    
+    
+
+    
+
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans TC";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/fonts/material-icons.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/shift-away.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/scale.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/backdrop.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/light.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/tippy.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/material.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/core/core.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" data-mx-topbar="glass">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="toc" type="checkbox" id="__toc" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <label class="md-overlay" for="__toc"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#換成-5-年來看" class="md-skip">
+          跳轉至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="頁首">
+    <a href="../../.." title="Pewren 的投資筆記" class="md-header__button md-logo" aria-label="Pewren 的投資筆記" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Pewren 的投資筆記
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              換成 5 年來看
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.25 2a8.25 8.25 0 0 1 6.34 13.53l5.69 5.69a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215l-5.69-5.69A8.25 8.25 0 1 1 10.25 2M3.5 10.25a6.75 6.75 0 1 0 13.5 0 6.75 6.75 0 0 0-13.5 0"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜尋" placeholder="搜尋" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.25 2a8.25 8.25 0 0 1 6.34 13.53l5.69 5.69a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215l-5.69-5.69A8.25 8.25 0 1 1 10.25 2M3.5 10.25a6.75 6.75 0 1 0 13.5 0 6.75 6.75 0 0 0-13.5 0"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="搜尋">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.5a3.498 3.498 0 0 1-6.062 2.385l-5.112 3.021a3.5 3.5 0 0 1 0 2.188l5.112 3.021a3.5 3.5 0 1 1-.764 1.29l-5.112-3.02a3.499 3.499 0 1 1-3.843-5.642 3.5 3.5 0 0 1 3.843.872l5.112-3.021A3.5 3.5 0 1 1 20 5.5m-1.5 13a2 2 0 1 0-3.999-.001 2 2 0 0 0 3.999.001m0-13a2 2 0 1 0-3.999-.001A2 2 0 0 0 18.5 5.5M5.5 14a2 2 0 1 0 .001-3.999A2 2 0 0 0 5.5 14"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空" aria-label="清空" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0">
+        <div class="md-search-result md-search-result--pagefind" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜尋引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="標籤頁" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  免責聲明
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  文章
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tags/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  標籤
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="導航" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Pewren 的投資筆記" class="md-nav__button md-logo" aria-label="Pewren 的投資筆記" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"/></svg>
+
+    </a>
+    Pewren 的投資筆記
+  </label>
+  
+  <ul class="md-nav__list">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    免責聲明
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文章
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    文章
+  
+
+          </label>
+          <ul class="md-nav__list">
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0050 與 00685L 回測
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    0050 與 00685L 回測
+  
+
+          </label>
+          <ul class="md-nav__list">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../method/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    回測設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exposure-and-return/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    平均曝險決定長期報酬
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    換成 5 年來看
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    換成 5 年來看
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc">
+      
+        <li class="md-nav__item">
+  <a href="#區間切法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        區間切法
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#各策略的區間分布" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        各策略的區間分布
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#最差區間" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最差區間
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="最差區間">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2004-01--2008-12報酬最差" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2004-01 ~ 2008-12：報酬最差
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2007-01--2011-12套牢最久" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2007-01 ~ 2011-12：套牢最久
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#曝險相近策略的逐區間-cagr-比較" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        曝險相近策略的逐區間 CAGR 比較
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#觀察" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        觀察
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="觀察">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#最差的-5-年各策略的差距主要在回撤" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最差的 5 年，各策略的差距主要在回撤
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-年區間的回撤持續期間要和全期間一起看" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 年區間的回撤持續期間要和全期間一起看
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#曝險決定獲利的說法在-5-年尺度上只是大致成立" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        曝險決定獲利的說法，在 5 年尺度上只是大致成立
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../takeaways/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    心得
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix-results/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附錄：完整回測結果
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendix-data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附錄：資料製作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    標籤
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc">
+      
+        <li class="md-nav__item">
+  <a href="#區間切法" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        區間切法
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#各策略的區間分布" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        各策略的區間分布
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#最差區間" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最差區間
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="最差區間">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2004-01--2008-12報酬最差" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2004-01 ~ 2008-12：報酬最差
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2007-01--2011-12套牢最久" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2007-01 ~ 2011-12：套牢最久
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#曝險相近策略的逐區間-cagr-比較" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        曝險相近策略的逐區間 CAGR 比較
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#觀察" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        觀察
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="觀察">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#最差的-5-年各策略的差距主要在回撤" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        最差的 5 年，各策略的差距主要在回撤
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-年區間的回撤持續期間要和全期間一起看" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5 年區間的回撤持續期間要和全期間一起看
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#曝險決定獲利的說法在-5-年尺度上只是大致成立" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        曝險決定獲利的說法，在 5 年尺度上只是大致成立
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="導航" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    免責聲明
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    文章
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    0050 與 00685L 回測
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              
+              
+              <article class="md-content__inner md-typeset" data-pagefind-body>
+                
+                  
+
+<h1 id="換成-5-年來看">換成 5 年來看<a class="headerlink" href="#換成-5-年來看" title="本節的固定連結">&para;</a></h1>
+<div class='document-dates-plugin-wrapper document-dates-top'><div class='document-dates-plugin' locale='zh_TW'><div class='dd-left'><span class='dd-item' data-tippy-content data-tippy-raw='2026-10-01'><span class='material-icons' data-icon='doc_created'></span><time datetime='2026-10-01T00:00:00+08:00'>2026-10-01</time></span><span class='dd-item' data-tippy-content data-tippy-raw='2026-10-01'><span class='material-icons' data-icon='doc_updated'></span><time datetime='2026-10-01T00:00:00+08:00'>2026-10-01</time></span></div></div></div>
+
+<p><a href="../exposure-and-return/">平均曝險決定長期報酬</a> 用的是 22 年的全期間回測，但很少人的持有期間剛好是這 22 年。這篇把回測切成 5 年一段，觀察不同進場時點的結果分布，尤其是最差的 5 年長什麼樣子。</p>
+<p>各策略的原始結果見 <a href="../appendix-results/">附錄：各策略完整回測結果</a>，打開每種策略的「多區間回測」查看。</p>
+<hr />
+<h2 id="區間切法">區間切法<a class="headerlink" href="#區間切法" title="本節的固定連結">&para;</a></h2>
+<p>以 5 年為一段，起始月從 2004-01 到 2022-01 每年往後移一年，共 19 個區間。最後一段 2022-01 ~ 2026-09 不足 5 年。策略參數和全期間回測相同。</p>
+<p>各區間彼此重疊，不是獨立樣本，比較適合用來觀察「不同進場時點的結果分布」，而不是當成 19 次獨立的實驗。</p>
+<p>解讀最大回撤持續期間時要注意：</p>
+<ul>
+<li><strong>歷史高點從區間第一個月重新起算</strong>：區間開始前的高點看不到。起始月在高點之後的區間，只要回到起點附近就算回本，數值會大幅縮短。</li>
+<li><strong>被區間終點截斷</strong>：區間結束時尚未回本的那一段只算到區間結束，所以 5 年區間的數值只是下限。60 個月的區間最多只能得到 59 個月，因為高點那個月本身不計入。</li>
+<li><strong>依賴起始月的位置</strong>：起始月都在 1 月，可能剛好錯過最不利的起點。例如 00685L-SIM 全數持有全期間的最長回撤是 2007-10 高點起算的 81 個月，但 5 年區間中最多只看到 50 個月。</li>
+</ul>
+<p>評估「最久要等多久」時，應以全期間結果為準。</p>
+<hr />
+<h2 id="各策略的區間分布">各策略的區間分布<a class="headerlink" href="#各策略的區間分布" title="本節的固定連結">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>策略</th>
+<th>平均曝險</th>
+<th>最差 CAGR</th>
+<th>中位數 CAGR</th>
+<th>最佳 CAGR</th>
+<th>負報酬區間</th>
+<th>最深回撤</th>
+<th>最長回撤持續（月）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0050-ADJ 二組件再平衡</td>
+<td>52.9%</td>
+<td>-0.88%</td>
+<td>5.77%</td>
+<td>16.80%</td>
+<td>1 / 19</td>
+<td>31.68%</td>
+<td>37</td>
+</tr>
+<tr>
+<td>0050-ADJ 全數持有</td>
+<td>100.0%</td>
+<td>-3.65%</td>
+<td>9.58%</td>
+<td>31.39%</td>
+<td>1 / 19</td>
+<td>53.96%</td>
+<td>38</td>
+</tr>
+<tr>
+<td>00685L-SIM 二組件再平衡</td>
+<td>106.4%</td>
+<td>-2.39%</td>
+<td>11.62%</td>
+<td>27.66%</td>
+<td>1 / 19</td>
+<td>54.81%</td>
+<td>37</td>
+</tr>
+<tr>
+<td>三組件 433 再平衡</td>
+<td>107.0%</td>
+<td>-2.90%</td>
+<td>10.44%</td>
+<td>30.21%</td>
+<td>1 / 19</td>
+<td>55.38%</td>
+<td>38</td>
+</tr>
+<tr>
+<td>三組件 442 再平衡</td>
+<td>127.2%</td>
+<td>-3.38%</td>
+<td>12.81%</td>
+<td>35.92%</td>
+<td>1 / 19</td>
+<td>64.17%</td>
+<td>38</td>
+</tr>
+<tr>
+<td>00685L-SIM 全數持有</td>
+<td>200.0%</td>
+<td>-10.27%</td>
+<td>18.52%</td>
+<td>49.60%</td>
+<td>2 / 19</td>
+<td>82.20%</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>所有策略的最差區間都是 2004-01 ~ 2008-12，最佳區間都是 2022-01 ~ 2026-09。</li>
+<li>最長回撤持續期間是在 5 年區間內觀察到的月數，只是<strong>下限</strong>，詳見 <a href="#區間切法">區間切法</a>。前五個策略的 37 ~ 38 個月都在區間內回本，和全期間結果相近；00685L-SIM 全數持有的 50 個月則被區間終點截斷，全期間實際是 81 個月。</li>
+</ul>
+<hr />
+<h2 id="最差區間">最差區間<a class="headerlink" href="#最差區間" title="本節的固定連結">&para;</a></h2>
+<h3 id="2004-01--2008-12報酬最差">2004-01 ~ 2008-12：報酬最差<a class="headerlink" href="#2004-01--2008-12報酬最差" title="本節的固定連結">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>策略</th>
+<th>CAGR</th>
+<th>總報酬</th>
+<th>最大回撤</th>
+<th>回撤持續（月）</th>
+<th>年化波動率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0050-ADJ 二組件再平衡</td>
+<td>-0.88%</td>
+<td>-4.27%</td>
+<td>28.66%</td>
+<td>20</td>
+<td>9.95%</td>
+</tr>
+<tr>
+<td>0050-ADJ 全數持有</td>
+<td>-3.65%</td>
+<td>-16.70%</td>
+<td>51.50%</td>
+<td>20</td>
+<td>20.05%</td>
+</tr>
+<tr>
+<td>00685L-SIM 二組件再平衡</td>
+<td>-2.39%</td>
+<td>-11.22%</td>
+<td>52.23%</td>
+<td>21</td>
+<td>21.45%</td>
+</tr>
+<tr>
+<td>三組件 433 再平衡</td>
+<td>-2.90%</td>
+<td>-13.49%</td>
+<td>52.20%</td>
+<td>21</td>
+<td>20.49%</td>
+</tr>
+<tr>
+<td>三組件 442 再平衡</td>
+<td>-3.38%</td>
+<td>-15.53%</td>
+<td>58.54%</td>
+<td>21</td>
+<td>24.75%</td>
+</tr>
+<tr>
+<td>00685L-SIM 全數持有</td>
+<td>-10.27%</td>
+<td>-41.29%</td>
+<td>80.20%</td>
+<td>21</td>
+<td>41.52%</td>
+</tr>
+</tbody>
+</table>
+<p>這段區間的回撤持續期間（20 ~ 21 個月）和金融海嘯無關，來自 2004-02 高點到 2005 年底回本的那一段。海嘯的回撤從 2007-10 高點開始，到區間結束只有 14 個月，被區間終點截斷，反而比較短。</p>
+<h3 id="2007-01--2011-12套牢最久">2007-01 ~ 2011-12：套牢最久<a class="headerlink" href="#2007-01--2011-12套牢最久" title="本節的固定連結">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>策略</th>
+<th>CAGR</th>
+<th>總報酬</th>
+<th>最大回撤</th>
+<th>回撤持續（月）</th>
+<th>年化波動率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0050-ADJ 二組件再平衡</td>
+<td>1.39%</td>
+<td>7.01%</td>
+<td>31.68%</td>
+<td>37</td>
+<td>13.05%</td>
+</tr>
+<tr>
+<td>0050-ADJ 全數持有</td>
+<td>1.22%</td>
+<td>6.14%</td>
+<td>53.96%</td>
+<td>38</td>
+<td>24.79%</td>
+</tr>
+<tr>
+<td>00685L-SIM 二組件再平衡</td>
+<td>2.90%</td>
+<td>15.09%</td>
+<td>54.08%</td>
+<td>37</td>
+<td>26.74%</td>
+</tr>
+<tr>
+<td>三組件 433 再平衡</td>
+<td>0.93%</td>
+<td>4.67%</td>
+<td>55.38%</td>
+<td>38</td>
+<td>26.51%</td>
+</tr>
+<tr>
+<td>三組件 442 再平衡</td>
+<td>1.45%</td>
+<td>7.33%</td>
+<td>62.15%</td>
+<td>37</td>
+<td>31.85%</td>
+</tr>
+<tr>
+<td>00685L-SIM 全數持有</td>
+<td>-3.32%</td>
+<td>-15.30%</td>
+<td>82.20%</td>
+<td>50</td>
+<td>51.75%</td>
+</tr>
+</tbody>
+</table>
+<p>這段區間包含 2007-10 的海嘯前高點。5 年後除了 00685L-SIM 全數持有以外都是小幅正報酬，CAGR 落在 0.9% ~ 2.9%，而且中途都經歷了 3 年以上低於高點的時間，在 2010-12 或 2011-01 回本。</p>
+<p>00685L-SIM 全數持有的 50 個月是 2007-11 到區間結束，區間結束時仍未回本。全期間回測中，它要到 2014-08 才回到 2007-10 的高點，實際是 81 個月。</p>
+<hr />
+<h2 id="曝險相近策略的逐區間-cagr-比較">曝險相近策略的逐區間 CAGR 比較<a class="headerlink" href="#曝險相近策略的逐區間-cagr-比較" title="本節的固定連結">&para;</a></h2>
+<p>全期間回測中，0050-ADJ 全數持有（曝險 100%）、00685L-SIM 50% 加現金再平衡（平均曝險 106.4%）、三組件 433 再平衡（平均曝險 107.0%）的 CAGR 最多只差 0.35 個百分點。拆成 5 年區間來看：</p>
+<ul>
+<li>策略 1：0050-ADJ 全數持有</li>
+<li>策略 2：00685L-SIM 二組件再平衡</li>
+<li>策略 3：三組件 433 再平衡</li>
+</ul>
+<details class="note">
+<summary>19 個區間的 CAGR 比較</summary>
+<table>
+<thead>
+<tr>
+<th>區間</th>
+<th>策略 1</th>
+<th>策略 2</th>
+<th>策略 3</th>
+<th>Δ(2-1)</th>
+<th>Δ(3-1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2004-01 ~ 2008-12</td>
+<td>-3.65%</td>
+<td>-2.39%</td>
+<td>-2.90%</td>
+<td>+1.26</td>
+<td>+0.75</td>
+</tr>
+<tr>
+<td>2005-01 ~ 2009-12</td>
+<td>8.63%</td>
+<td>11.62%</td>
+<td>10.44%</td>
+<td>+2.99</td>
+<td>+1.81</td>
+</tr>
+<tr>
+<td>2006-01 ~ 2010-12</td>
+<td>8.54%</td>
+<td>11.77%</td>
+<td>10.40%</td>
+<td>+3.23</td>
+<td>+1.86</td>
+</tr>
+<tr>
+<td>2007-01 ~ 2011-12</td>
+<td>1.22%</td>
+<td>2.90%</td>
+<td>0.93%</td>
+<td>+1.68</td>
+<td>-0.29</td>
+</tr>
+<tr>
+<td>2008-01 ~ 2012-12</td>
+<td>3.47%</td>
+<td>4.75%</td>
+<td>3.43%</td>
+<td>+1.28</td>
+<td>-0.04</td>
+</tr>
+<tr>
+<td>2009-01 ~ 2013-12</td>
+<td>17.88%</td>
+<td>20.25%</td>
+<td>19.43%</td>
+<td>+2.37</td>
+<td>+1.55</td>
+</tr>
+<tr>
+<td>2010-01 ~ 2014-12</td>
+<td>8.29%</td>
+<td>6.93%</td>
+<td>7.69%</td>
+<td>-1.36</td>
+<td>-0.60</td>
+</tr>
+<tr>
+<td>2011-01 ~ 2015-12</td>
+<td>2.36%</td>
+<td>1.83%</td>
+<td>2.41%</td>
+<td>-0.53</td>
+<td>+0.05</td>
+</tr>
+<tr>
+<td>2012-01 ~ 2016-12</td>
+<td>9.58%</td>
+<td>7.81%</td>
+<td>8.87%</td>
+<td>-1.77</td>
+<td>-0.71</td>
+</tr>
+<tr>
+<td>2013-01 ~ 2017-12</td>
+<td>11.41%</td>
+<td>10.43%</td>
+<td>11.14%</td>
+<td>-0.98</td>
+<td>-0.27</td>
+</tr>
+<tr>
+<td>2014-01 ~ 2018-12</td>
+<td>8.56%</td>
+<td>6.50%</td>
+<td>7.85%</td>
+<td>-2.06</td>
+<td>-0.71</td>
+</tr>
+<tr>
+<td>2015-01 ~ 2019-12</td>
+<td>10.76%</td>
+<td>10.08%</td>
+<td>10.50%</td>
+<td>-0.68</td>
+<td>-0.26</td>
+</tr>
+<tr>
+<td>2016-01 ~ 2020-12</td>
+<td>19.49%</td>
+<td>19.88%</td>
+<td>19.85%</td>
+<td>+0.39</td>
+<td>+0.36</td>
+</tr>
+<tr>
+<td>2017-01 ~ 2021-12</td>
+<td>18.96%</td>
+<td>22.82%</td>
+<td>22.14%</td>
+<td>+3.86</td>
+<td>+3.18</td>
+</tr>
+<tr>
+<td>2018-01 ~ 2022-12</td>
+<td>8.74%</td>
+<td>12.64%</td>
+<td>10.28%</td>
+<td>+3.90</td>
+<td>+1.54</td>
+</tr>
+<tr>
+<td>2019-01 ~ 2023-12</td>
+<td>16.38%</td>
+<td>21.27%</td>
+<td>18.77%</td>
+<td>+4.89</td>
+<td>+2.39</td>
+</tr>
+<tr>
+<td>2020-01 ~ 2024-12</td>
+<td>20.36%</td>
+<td>22.19%</td>
+<td>21.92%</td>
+<td>+1.83</td>
+<td>+1.56</td>
+</tr>
+<tr>
+<td>2021-01 ~ 2025-12</td>
+<td>18.68%</td>
+<td>18.21%</td>
+<td>18.43%</td>
+<td>-0.47</td>
+<td>-0.25</td>
+</tr>
+<tr>
+<td>2022-01 ~ 2026-09</td>
+<td>31.39%</td>
+<td>27.66%</td>
+<td>30.21%</td>
+<td>-3.73</td>
+<td>-1.18</td>
+</tr>
+</tbody>
+</table>
+<p>差距為相對 0050-ADJ 全數持有的百分點，正值表示較高。</p>
+</details>
+<ul>
+<li><strong>00685L-SIM 二組件再平衡</strong>：19 段中只有 5 段差距在 1 個百分點以內，11 段在 2 個百分點以內，最大差距接近 5 個百分點。</li>
+<li><strong>三組件 433 再平衡</strong>：19 段中有 11 段差距在 1 個百分點以內，17 段在 2 個百分點以內，最大差距約 3 個百分點。</li>
+<li>差距的正負沒有固定方向，長期累積下來大致抵銷。</li>
+</ul>
+<p>三組件 433 再平衡有 16 段的 CAGR 落在另外兩者之間。這支持「差距主要來自追蹤指數不同」的解釋：0050 追蹤臺灣 50 指數，00685L 追蹤加權指數，兩者的成分股集中度不同，例如台積電的權重。00685L-SIM 二組件再平衡的曝險全部來自加權指數；三組件 433 再平衡的曝險有 40% 來自臺灣 50、60% 來自加權指數，結果也就落在兩者之間。</p>
+<hr />
+<h2 id="觀察">觀察<a class="headerlink" href="#觀察" title="本節的固定連結">&para;</a></h2>
+<h3 id="最差的-5-年各策略的差距主要在回撤">最差的 5 年，各策略的差距主要在回撤<a class="headerlink" href="#最差的-5-年各策略的差距主要在回撤" title="本節的固定連結">&para;</a></h3>
+<p>最差區間裡，曝險 51% ~ 122% 的五個策略 CAGR 都在 -1% ~ -4%，差距不大；最大回撤則從 29% 到 59%，差了一倍。曝險 200% 的全數持有則是另一個量級：5 年虧損 41%，最大回撤 80%。</p>
+<h3 id="5-年區間的回撤持續期間要和全期間一起看">5 年區間的回撤持續期間要和全期間一起看<a class="headerlink" href="#5-年區間的回撤持續期間要和全期間一起看" title="本節的固定連結">&para;</a></h3>
+<p>即使是曝險 127% 的三組件 442，最長回撤持續期間也和 0050-ADJ 全數持有相同，都在 37 ~ 38 個月內回本。00685L-SIM 全數持有在 5 年區間中最多只看到 50 個月，但這是被截斷的結果，實際要 81 個月才回本。5 年區間的數值低估了長期回撤，評估「最久要等多久」時應以全期間結果為準。</p>
+<h3 id="曝險決定獲利的說法在-5-年尺度上只是大致成立">曝險決定獲利的說法，在 5 年尺度上只是大致成立<a class="headerlink" href="#曝險決定獲利的說法在-5-年尺度上只是大致成立" title="本節的固定連結">&para;</a></h3>
+<p>曝險相近的策略，5 年 CAGR 的差距可達 2 ~ 4 個百分點，要拉長到 20 年以上才會收斂。差距的一大部分來自標的追蹤的指數不同，而不是操作方式；標的組成越接近，5 年尺度的差距就越小。</p>
+
+
+
+
+
+
+
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:0050" class="md-tag md-tag-icon">0050</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:00685l" class="md-tag md-tag-icon">00685L</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:回測" class="md-tag md-tag-icon">回測</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:槓桿-etf" class="md-tag md-tag-icon">槓桿 ETF</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../../tags/#tag:資產配置" class="md-tag md-tag-icon">資產配置</a>
+      
+    
+  </nav>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+          <div class="md-top" data-md-component="top" hidden>
+  <div class="md-top__center">
+    <button type="button" class="md-top__button md-top__button--main" data-md-action="top">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+      <span>回到頂部</span>
+    </button>
+    
+      
+      
+      <label class="md-top__button md-top__side md-top__side--nav" for="__drawer" >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-panel-left" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg>
+      </label>
+    
+    
+      
+      
+      <label class="md-top__button md-top__side md-top__side--toc" for="__toc" >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-panel-right" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M15 3v18"/></svg>
+      </label>
+    
+  </div>
+</div>
+      </main>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+          
+          
+        
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "code": null, "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.path", "navigation.top", "navigation.tracking", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tooltips"], "search": {"options": {"baseUrl": "../../..", "bundleUrl": "../../../search/", "highlight": true, "searchOptions": {}}, "provider": "pagefind"}, "tags": null, "translations": {"clipboard.copied": "\u5df2\u62f7\u8c9d", "clipboard.copy": "\u62f7\u8c9d", "code.collapse": "\u6536\u8d77", "code.download": "\u4e0b\u8f09", "code.expand": "\u5c55\u958b\u5269\u4f59 # \u884c", "code.select": "\u5207\u63db\u884c\u9078\u64c7", "search.offline": "\u96e2\u7dda\u641c\u5c0b\u8acb\u5207\u63db\u5230 Lunr", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u627e\u5230\u7b26\u5408\u689d\u4ef6\u7684\u7d50\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u689d\u4ef6\u7684\u7d50\u679c", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u689d\u4ef6\u7684\u7d50\u679c", "search.result.placeholder": "\u9375\u5165\u4ee5\u958b\u59cb\u6aa2\u7d22", "search.result.term.missing": "\u7f3a\u5931", "select.version": "\u9078\u64c7\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.44453a05.min.js"></script>
+      
+        <script src="../../../javascripts/report-iframe.js"></script>
+      
+        <script src="../../../assets/document_dates/tippy/popper.min.js"></script>
+      
+        <script src="../../../assets/document_dates/tippy/tippy.umd.min.js"></script>
+      
+        <script src="../../../assets/document_dates/core/md5.min.js"></script>
+      
+        <script src="../../../assets/document_dates/core/default.config.js"></script>
+      
+        <script src="../../../assets/document_dates/core/utils.js"></script>
+      
+        <script src="../../../assets/document_dates/core/core.js"></script>
+      
+    
+  </body>
+</html>

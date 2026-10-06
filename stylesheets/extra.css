@@ -1,0 +1,17 @@
+/* 永久保留垂直捲軸的軌道寬度。
+   否則短頁面（無捲軸）與長頁面（有捲軸）之間切換時，捲軸寬度的增減會讓
+   置中的內容區左右平移。 */
+html {
+  scrollbar-gutter: stable;
+}
+
+/* 內嵌的回測報告。高度由 javascripts/report-iframe.js 依內容調整，
+   此處的 height 只是載入前的預設值。報告固定為白底，加外框讓它在深色模式下
+   看起來像一張卡片。 */
+iframe.report {
+  display: block;
+  width: 100%;
+  height: 600px;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.2rem;
+}
