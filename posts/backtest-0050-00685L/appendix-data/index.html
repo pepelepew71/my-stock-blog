@@ -878,17 +878,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#圖表" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        圖表
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1149,17 +1138,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#圖表" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        圖表
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1248,6 +1226,9 @@
 
 <p>整理從臺灣證券交易所（TWSE）抓取月頻歷史價格的概念，包含含息大盤指數、0050 與 00685L 的還原價，以及用含息大盤回推 00685L 上市前價格（00685L-SIM）的做法。目的是取得一條可以直接計算<strong>含息總報酬</strong>的月價格序列，作為後續回測與計算報酬、波動率的基礎。</p>
 <p>整理後的月價格資料可參考 <a href="https://docs.google.com/spreadsheets/d/1v1rACxQscnkHCPYUXWJfJ6OuJLYbRODk03tZJ6GeZYA/edit?usp=sharing">Google Sheet</a>。</p>
+<p>將 0050-ADJ、00685L-SIM 與 TAIEX 三者的還原價、原始價與模擬價繪製折線圖如下：</p>
+<iframe class="report" src="../assets/reports/prices.html" title="三種資料折線圖" loading="lazy"></iframe>
+
 <hr />
 <h2 id="基本概念">基本概念<a class="headerlink" href="#基本概念" title="本節的固定連結">&para;</a></h2>
 <h3 id="為什麼以證交所為主要來源">為什麼以證交所為主要來源<a class="headerlink" href="#為什麼以證交所為主要來源" title="本節的固定連結">&para;</a></h3>
@@ -1313,10 +1294,6 @@
 <li><strong>月頻看不到月內波動</strong>：槓桿 ETF 每日重新平衡，在震盪或連續重挫時會有波動耗損，月頻模擬看不到這部分，模擬出的最大回撤會偏樂觀。</li>
 <li><strong>只適用於追蹤加權指數的正 2</strong>：若要模擬其他槓桿 ETF（例如追蹤台灣 50 指數的 00631L），需改用它所追蹤指數的含息版本，並重新校準成本。</li>
 </ul>
-<hr />
-<h2 id="圖表">圖表<a class="headerlink" href="#圖表" title="本節的固定連結">&para;</a></h2>
-<p>0050-ADJ、00685L-SIM 與 TAIEX 的還原價、原始價與模擬價折線圖如下：</p>
-<iframe class="report" src="../assets/reports/prices.html" title="三種資料折線圖" loading="lazy"></iframe>
 
 
 
