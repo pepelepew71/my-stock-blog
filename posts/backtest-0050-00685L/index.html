@@ -831,7 +831,7 @@
                   
 
 <h1 id="0050-與-00685l-回測">0050 與 00685L 回測<a class="headerlink" href="#0050-與-00685l-回測" title="本節的固定連結">&para;</a></h1>
-<div class='document-dates-plugin-wrapper document-dates-top'><div class='document-dates-plugin' locale='zh_TW'><div class='dd-left'><span class='dd-item' data-tippy-content data-tippy-raw='2026-10-01'><span class='material-icons' data-icon='doc_created'></span><time datetime='2026-10-01T00:00:00+08:00'>2026-10-01</time></span><span class='dd-item' data-tippy-content data-tippy-raw='2026-10-01'><span class='material-icons' data-icon='doc_updated'></span><time datetime='2026-10-01T00:00:00+08:00'>2026-10-01</time></span></div></div></div>
+<div class='document-dates-plugin-wrapper document-dates-top'><div class='document-dates-plugin' locale='zh_TW'><div class='dd-left'><span class='dd-item' data-tippy-content data-tippy-raw='2026-10-01'><span class='material-icons' data-icon='doc_created'></span><time datetime='2026-10-01T00:00:00+08:00'>2026-10-01</time></span><span class='dd-item' data-tippy-content data-tippy-raw='2026-10-09'><span class='material-icons' data-icon='doc_updated'></span><time datetime='2026-10-09T00:00:00+08:00'>2026-10-09</time></span></div></div></div>
 
 <div class="admonition info">
 <p class="admonition-title">閱讀前</p>
@@ -841,7 +841,7 @@
 <p>在 2026 年陸續接觸了 CLEC 與「大仁來開槓」的 podcast，開始使用原型與槓桿 ETF 來配置資產。但在閱讀 CLEC 的再平衡策略時感到困惑。CLEC 的再平衡有一套明確的規則：以年為單位執行，與前一年同期比較來判定上漲年或下跌年，上漲年把槓桿獲利的 30% 轉入現金，下跌年從現金提取 2% 慢慢補倉，並強調「聰明再平衡」而不是無腦再平衡。這些規則必然有其道理，但我思考的是為什麼是一年、為什麼是 30% 與 2%，換成其他數字或方法會有什麼差異。</p>
 <p>後來參考了「大仁來開槓」介紹的曝險比率計算方式，我決定改用曝險比率作為觸發再平衡的條件：先設定一個目標曝險，當實際曝險偏離到一定範圍外時才進行再平衡。例如 442 配置的目標曝險為 1.2，低於 1.08 或高於 1.44 時再平衡；433 配置的目標曝險為 1.0，範圍是 0.90 ~ 1.20。</p>
 <p>標的方面，我沒有採用 CLEC 使用的 00662 與 00670L，而是改用 0050 與 00685L，原因很單純，就是資料比較多。0050 在 2003 年就上市，00685L 雖然到 2017 年才上市，但可以用含息大盤往前回推模擬資料，讓回測從 2004 年開始，涵蓋 2008 年金融海嘯的崩盤。</p>
-<p>比較了幾種策略的回測結果後，我覺得影響長期報酬的主要因素是平均曝險，只要把握住基本原則：控制平均曝險，適時保持在可承受範圍，就不需要太拘泥於明確的規則。這系列文章就是整理這次回測的過程與心得。</p>
+<p>比較了幾種策略的回測結果後，我的結論是：影響長期報酬的主要因素是平均曝險，只要把握住基本原則，控制平均曝險，適時保持在可承受範圍，就不需要太拘泥於明確的規則。這系列文章就是整理這次回測的過程與心得。</p>
 <blockquote>
 <p>我喜歡保持簡單。我根深蒂固的投資信念就是，為投資付出的心血與投資結果幾乎毫不相關。理由在於，這個世界是由長尾所驅動，也就是極少變數會產生極大部份的結果。無論你多麼努力嘗試投資，只要你錯失兩、三件實質影響投資策略的事情，結果就不會太好。反之亦然。簡單的投資策略只要捉住幾件攸關策略成功的關鍵，就能發揮很好的作用。 —《致富心態》20 我的自白</p>
 </blockquote>
@@ -855,8 +855,8 @@
 </ol>
 <p>附錄：</p>
 <ul>
-<li><a href="appendix-results/">各策略完整回測結果</a>：原始數據與互動報告，供查證用。</li>
-<li><a href="appendix-data/">還原 0050 與 00685L-SIM 資料製作</a>：還原 0050 與模擬含息大盤正 2 的做法。</li>
+<li><a href="appendix-results/">附錄：完整回測結果</a>：原始數據與互動報告，供查證用。</li>
+<li><a href="appendix-data/">附錄：資料製作說明</a>：說明還原 0050 與模擬 00685L 的做法。</li>
 </ul>
 
 

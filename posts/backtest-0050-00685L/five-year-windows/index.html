@@ -1103,7 +1103,7 @@
 <div class='document-dates-plugin-wrapper document-dates-top'><div class='document-dates-plugin' locale='zh_TW'><div class='dd-left'><span class='dd-item' data-tippy-content data-tippy-raw='2026-10-01'><span class='material-icons' data-icon='doc_created'></span><time datetime='2026-10-01T00:00:00+08:00'>2026-10-01</time></span><span class='dd-item' data-tippy-content data-tippy-raw='2026-10-01'><span class='material-icons' data-icon='doc_updated'></span><time datetime='2026-10-01T00:00:00+08:00'>2026-10-01</time></span></div></div></div>
 
 <p><a href="../exposure-and-return/">平均曝險決定長期報酬</a> 用的是 22 年的全期間回測，但很少人的持有期間剛好是這 22 年。這篇把回測切成 5 年一段，觀察不同進場時點的結果分布，尤其是最差的 5 年長什麼樣子。</p>
-<p>各策略的原始結果見 <a href="../appendix-results/">附錄：各策略完整回測結果</a>，打開每種策略的「多區間回測」查看。</p>
+<p>各策略的原始結果見 <a href="../appendix-results/">附錄：完整回測結果</a>，打開每種策略的「多區間回測」查看。</p>
 <hr />
 <h2 id="區間切法">區間切法<a class="headerlink" href="#區間切法" title="本節的固定連結">&para;</a></h2>
 <p>以 5 年為一段，起始月從 2004-01 到 2022-01 每年往後移一年，共 19 個區間。最後一段 2022-01 ~ 2026-09 不足 5 年。策略參數和全期間回測相同。</p>
@@ -1121,13 +1121,13 @@
 <thead>
 <tr>
 <th>策略</th>
-<th>平均曝險</th>
+<th>平均曝險（全期間）</th>
 <th>最差 CAGR</th>
 <th>中位數 CAGR</th>
 <th>最佳 CAGR</th>
 <th>負報酬區間</th>
-<th>最深回撤</th>
-<th>最長回撤持續（月）</th>
+<th>最大回撤</th>
+<th>回撤持續（月）</th>
 </tr>
 </thead>
 <tbody>
@@ -1195,7 +1195,7 @@
 </table>
 <ul>
 <li>所有策略的最差區間都是 2004-01 ~ 2008-12，最佳區間都是 2022-01 ~ 2026-09。</li>
-<li>最長回撤持續期間是在 5 年區間內觀察到的月數，只是<strong>下限</strong>，詳見 <a href="#區間切法">區間切法</a>。前五個策略的 37 ~ 38 個月都在區間內回本，和全期間結果相近；00685L-SIM 全數持有的 50 個月則被區間終點截斷，全期間實際是 81 個月。</li>
+<li>最長回撤持續期間是在 5 年區間內觀察到的月數，只是<strong>下限</strong>。前五個策略的 37 ~ 38 個月都在區間內回本，和全期間結果相近；00685L-SIM 全數持有的 50 個月則被區間終點截斷，全期間實際是 81 個月。</li>
 </ul>
 <hr />
 <h2 id="最差區間">最差區間<a class="headerlink" href="#最差區間" title="本節的固定連結">&para;</a></h2>
@@ -1204,6 +1204,7 @@
 <thead>
 <tr>
 <th>策略</th>
+<th>平均曝險（區間）</th>
 <th>CAGR</th>
 <th>總報酬</th>
 <th>最大回撤</th>
@@ -1214,6 +1215,7 @@
 <tbody>
 <tr>
 <td>0050-ADJ 二組件再平衡</td>
+<td>51.0%</td>
 <td>-0.88%</td>
 <td>-4.27%</td>
 <td>28.66%</td>
@@ -1222,6 +1224,7 @@
 </tr>
 <tr>
 <td>0050-ADJ 全數持有</td>
+<td>100.0%</td>
 <td>-3.65%</td>
 <td>-16.70%</td>
 <td>51.50%</td>
@@ -1230,6 +1233,7 @@
 </tr>
 <tr>
 <td>00685L-SIM 二組件再平衡</td>
+<td>105.2%</td>
 <td>-2.39%</td>
 <td>-11.22%</td>
 <td>52.23%</td>
@@ -1238,6 +1242,7 @@
 </tr>
 <tr>
 <td>三組件 433 再平衡</td>
+<td>102.1%</td>
 <td>-2.90%</td>
 <td>-13.49%</td>
 <td>52.20%</td>
@@ -1246,6 +1251,7 @@
 </tr>
 <tr>
 <td>三組件 442 再平衡</td>
+<td>122.4%</td>
 <td>-3.38%</td>
 <td>-15.53%</td>
 <td>58.54%</td>
@@ -1254,6 +1260,7 @@
 </tr>
 <tr>
 <td>00685L-SIM 全數持有</td>
+<td>200.0%</td>
 <td>-10.27%</td>
 <td>-41.29%</td>
 <td>80.20%</td>
@@ -1268,6 +1275,7 @@
 <thead>
 <tr>
 <th>策略</th>
+<th>平均曝險（區間）</th>
 <th>CAGR</th>
 <th>總報酬</th>
 <th>最大回撤</th>
@@ -1278,6 +1286,7 @@
 <tbody>
 <tr>
 <td>0050-ADJ 二組件再平衡</td>
+<td>53.0%</td>
 <td>1.39%</td>
 <td>7.01%</td>
 <td>31.68%</td>
@@ -1286,6 +1295,7 @@
 </tr>
 <tr>
 <td>0050-ADJ 全數持有</td>
+<td>100.0%</td>
 <td>1.22%</td>
 <td>6.14%</td>
 <td>53.96%</td>
@@ -1294,6 +1304,7 @@
 </tr>
 <tr>
 <td>00685L-SIM 二組件再平衡</td>
+<td>102.6%</td>
 <td>2.90%</td>
 <td>15.09%</td>
 <td>54.08%</td>
@@ -1302,6 +1313,7 @@
 </tr>
 <tr>
 <td>三組件 433 再平衡</td>
+<td>105.7%</td>
 <td>0.93%</td>
 <td>4.67%</td>
 <td>55.38%</td>
@@ -1310,6 +1322,7 @@
 </tr>
 <tr>
 <td>三組件 442 再平衡</td>
+<td>124.9%</td>
 <td>1.45%</td>
 <td>7.33%</td>
 <td>62.15%</td>
@@ -1318,6 +1331,7 @@
 </tr>
 <tr>
 <td>00685L-SIM 全數持有</td>
+<td>200.0%</td>
 <td>-3.32%</td>
 <td>-15.30%</td>
 <td>82.20%</td>
