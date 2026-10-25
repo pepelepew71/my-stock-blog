@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://pepelepew71.github.io/my-stock-blog/</loc>
+        <loc>https://blog-stock.pewren.cc/</loc>
         <lastmod>2026-10-07</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>
-        <loc>https://pepelepew71.github.io/my-stock-blog/tags/</loc>
+        <loc>https://blog-stock.pewren.cc/tags/</loc>
         <lastmod>2026-10-07</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>
-        <loc>https://pepelepew71.github.io/my-stock-blog/posts/</loc>
+        <loc>https://blog-stock.pewren.cc/posts/</loc>
         <lastmod>2026-10-07</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>
-        <loc>https://pepelepew71.github.io/my-stock-blog/posts/backtest-0050-00685L/</loc>
+        <loc>https://blog-stock.pewren.cc/posts/backtest-0050-00685L/</loc>
         <lastmod>2026-10-09</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>
-        <loc>https://pepelepew71.github.io/my-stock-blog/posts/backtest-0050-00685L/appendix-data/</loc>
+        <loc>https://blog-stock.pewren.cc/posts/backtest-0050-00685L/appendix-data/</loc>
         <lastmod>2026-10-09</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>
-        <loc>https://pepelepew71.github.io/my-stock-blog/posts/backtest-0050-00685L/appendix-results/</loc>
+        <loc>https://blog-stock.pewren.cc/posts/backtest-0050-00685L/appendix-results/</loc>
         <lastmod>2026-10-09</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>
-        <loc>https://pepelepew71.github.io/my-stock-blog/posts/backtest-0050-00685L/exposure-and-return/</loc>
+        <loc>https://blog-stock.pewren.cc/posts/backtest-0050-00685L/exposure-and-return/</loc>
         <lastmod>2026-10-09</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>
-        <loc>https://pepelepew71.github.io/my-stock-blog/posts/backtest-0050-00685L/five-year-windows/</loc>
+        <loc>https://blog-stock.pewren.cc/posts/backtest-0050-00685L/five-year-windows/</loc>
         <lastmod>2026-10-01</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>
-        <loc>https://pepelepew71.github.io/my-stock-blog/posts/backtest-0050-00685L/method/</loc>
+        <loc>https://blog-stock.pewren.cc/posts/backtest-0050-00685L/method/</loc>
         <lastmod>2026-10-01</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>
-        <loc>https://pepelepew71.github.io/my-stock-blog/posts/backtest-0050-00685L/takeaways/</loc>
+        <loc>https://blog-stock.pewren.cc/posts/backtest-0050-00685L/takeaways/</loc>
         <lastmod>2026-10-23</lastmod>
         <changefreq>daily</changefreq>
     </url>
