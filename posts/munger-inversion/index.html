@@ -1,0 +1,1330 @@
+
+<!doctype html>
+<html lang="zh-Hant" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="個人投資、理財與股票的相關筆記">
+      
+      
+      
+        <link rel="canonical" href="https://blog-stock.pewren.cc/posts/munger-inversion/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../backtest-0050-00685L/">
+      
+      
+        
+      
+      
+      
+      
+        
+        
+        
+          <link rel="icon" href="../../assets/images/favicon.png">
+        
+      
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-materialx-10.2.0">
+    
+    
+      
+        <title>蒙格逆向思維的邏輯拆解 - Pewren 的投資筆記</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.d7aee198.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a45159b5.min.css">
+      
+    
+    
+
+    
+
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans TC";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../assets/document_dates/fonts/material-icons.css">
+    
+      <link rel="stylesheet" href="../../assets/document_dates/tippy/shift-away.css">
+    
+      <link rel="stylesheet" href="../../assets/document_dates/tippy/scale.css">
+    
+      <link rel="stylesheet" href="../../assets/document_dates/tippy/backdrop.css">
+    
+      <link rel="stylesheet" href="../../assets/document_dates/tippy/light.css">
+    
+      <link rel="stylesheet" href="../../assets/document_dates/tippy/tippy.css">
+    
+      <link rel="stylesheet" href="../../assets/document_dates/tippy/material.css">
+    
+      <link rel="stylesheet" href="../../assets/document_dates/core/core.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" data-mx-topbar="glass">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="toc" type="checkbox" id="__toc" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <label class="md-overlay" for="__toc"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#蒙格逆向思維的邏輯拆解" class="md-skip">
+          跳轉至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="頁首">
+    <a href="../.." title="Pewren 的投資筆記" class="md-header__button md-logo" aria-label="Pewren 的投資筆記" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Pewren 的投資筆記
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              蒙格逆向思維的邏輯拆解
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.25 2a8.25 8.25 0 0 1 6.34 13.53l5.69 5.69a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215l-5.69-5.69A8.25 8.25 0 1 1 10.25 2M3.5 10.25a6.75 6.75 0 1 0 13.5 0 6.75 6.75 0 0 0-13.5 0"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜尋" placeholder="搜尋" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.25 2a8.25 8.25 0 0 1 6.34 13.53l5.69 5.69a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215l-5.69-5.69A8.25 8.25 0 1 1 10.25 2M3.5 10.25a6.75 6.75 0 1 0 13.5 0 6.75 6.75 0 0 0-13.5 0"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="搜尋">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5.5a3.498 3.498 0 0 1-6.062 2.385l-5.112 3.021a3.5 3.5 0 0 1 0 2.188l5.112 3.021a3.5 3.5 0 1 1-.764 1.29l-5.112-3.02a3.499 3.499 0 1 1-3.843-5.642 3.5 3.5 0 0 1 3.843.872l5.112-3.021A3.5 3.5 0 1 1 20 5.5m-1.5 13a2 2 0 1 0-3.999-.001 2 2 0 0 0 3.999.001m0-13a2 2 0 1 0-3.999-.001A2 2 0 0 0 18.5 5.5M5.5 14a2 2 0 1 0 .001-3.999A2 2 0 0 0 5.5 14"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空" aria-label="清空" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0">
+        <div class="md-search-result md-search-result--pagefind" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜尋引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="標籤頁" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  免責聲明
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  文章
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="導航" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Pewren 的投資筆記" class="md-nav__button md-logo" aria-label="Pewren 的投資筆記" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4zM3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7zm2-2v2h2V5zm0 14h2v-2H5zm0-6h2v-2H5z"/></svg>
+
+    </a>
+    Pewren 的投資筆記
+  </label>
+  
+  <ul class="md-nav__list">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    免責聲明
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    文章
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    文章
+  
+
+          </label>
+          <ul class="md-nav__list">
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    蒙格逆向思維的邏輯拆解
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    蒙格逆向思維的邏輯拆解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc">
+      
+        <li class="md-nav__item">
+  <a href="#先釐清四種命題的邏輯關係" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        先釐清：四種命題的邏輯關係
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#為什麼要換問題a-rightarrow-b-難以證明" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        為什麼要換問題：\(A \rightarrow B\) 難以證明
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="為什麼要換問題：\(A \rightarrow B\) 難以證明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#現實世界不是完美的實驗室" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        現實世界不是完美的實驗室
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#失敗的因果關係相對明確" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        失敗的因果關係相對明確
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#本質確保生存讓成功自然發生" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本質：確保生存，讓成功自然發生
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#四種逆向思維方式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四種逆向思維方式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四種逆向思維方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-核心a_bad-rightarrow-sim-b做什麼會導致失敗" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 核心：\(A_{bad} \rightarrow \sim B\)（做什麼會導致失敗）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-減法策略sim-a_bad-rightarrow-b不做什麼會導致成功" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 減法策略：\(\sim A_{bad} \rightarrow B\)（不做什麼會導致成功）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-找出必要條件sim-a-rightarrow-sim-b不做什麼會導致失敗" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 找出必要條件：\(\sim A \rightarrow \sim B\)（不做什麼會導致失敗）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-另一種逆向b-rightarrow-a以終為始--逆向推導" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 另一種逆向：\(B \rightarrow A\)（以終為始 / 逆向推導）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#總結一套逆向思維決策流程" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        總結：一套逆向思維決策流程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#參考資料" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        參考資料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../backtest-0050-00685L/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0050 與 00685L 回測
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    0050 與 00685L 回測
+  
+
+          </label>
+          <ul class="md-nav__list">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backtest-0050-00685L/motivation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    動機
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backtest-0050-00685L/method/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    回測設計
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backtest-0050-00685L/exposure-and-return/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    平均曝險決定長期報酬
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backtest-0050-00685L/five-year-windows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    換成 5 年來看
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backtest-0050-00685L/takeaways/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    心得
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backtest-0050-00685L/appendix-results/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附錄：完整回測結果
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../backtest-0050-00685L/appendix-data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    附錄：資料製作說明
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目錄">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目錄
+    </label>
+    <ul class="md-nav__list" data-md-component="toc">
+      
+        <li class="md-nav__item">
+  <a href="#先釐清四種命題的邏輯關係" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        先釐清：四種命題的邏輯關係
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#為什麼要換問題a-rightarrow-b-難以證明" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        為什麼要換問題：\(A \rightarrow B\) 難以證明
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="為什麼要換問題：\(A \rightarrow B\) 難以證明">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#現實世界不是完美的實驗室" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        現實世界不是完美的實驗室
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#失敗的因果關係相對明確" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        失敗的因果關係相對明確
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#本質確保生存讓成功自然發生" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        本質：確保生存，讓成功自然發生
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#四種逆向思維方式" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四種逆向思維方式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四種逆向思維方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-核心a_bad-rightarrow-sim-b做什麼會導致失敗" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 核心：\(A_{bad} \rightarrow \sim B\)（做什麼會導致失敗）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-減法策略sim-a_bad-rightarrow-b不做什麼會導致成功" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 減法策略：\(\sim A_{bad} \rightarrow B\)（不做什麼會導致成功）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-找出必要條件sim-a-rightarrow-sim-b不做什麼會導致失敗" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 找出必要條件：\(\sim A \rightarrow \sim B\)（不做什麼會導致失敗）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-另一種逆向b-rightarrow-a以終為始--逆向推導" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 另一種逆向：\(B \rightarrow A\)（以終為始 / 逆向推導）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#總結一套逆向思維決策流程" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        總結：一套逆向思維決策流程
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#參考資料" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        參考資料
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="導航" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    免責聲明
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    文章
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              
+              
+              <article class="md-content__inner md-typeset" data-pagefind-body>
+                
+                  
+
+<h1 id="蒙格逆向思維的邏輯拆解">蒙格逆向思維的邏輯拆解<a class="headerlink" href="#蒙格逆向思維的邏輯拆解" title="本節的固定連結">&para;</a></h1>
+<div class='document-dates-plugin-wrapper document-dates-top'><div class='document-dates-plugin' locale='zh_TW'><div class='dd-left'><span class='dd-item' data-tippy-content data-tippy-raw='2026-10-11'><span class='material-icons' data-icon='doc_created'></span><time datetime='2026-10-11T00:00:00+08:00'>2026-10-11</time></span><span class='dd-item' data-tippy-content data-tippy-raw='2026-10-26'><span class='material-icons' data-icon='doc_updated'></span><time datetime='2026-10-26T00:00:00+08:00'>2026-10-26</time></span></div></div></div>
+
+<p>之前讀到查理蒙格的「逆向思維」（Inversion）方法，就在思考怎麼讓此工具作系統性的應用，因此想用理則學命題 <span class="arithmatex">\(A \rightarrow B\)</span>（做事 → 成功）來拆解。蒙格的核心不是對原命題做邏輯變形，而是把目標從「成功」換成「失敗」，找出必定導致失敗的行為並避開它。由於現實中「做什麼保證成功」幾乎無法證明，蒙格的逆向思維是承認這點之後改採的生存策略。</p>
+<hr />
+<h2 id="先釐清四種命題的邏輯關係">先釐清：四種命題的邏輯關係<a class="headerlink" href="#先釐清四種命題的邏輯關係" title="本節的固定連結">&para;</a></h2>
+<p>以原命題 <span class="arithmatex">\(A \rightarrow B\)</span> 為基準，傳統理則學有四種相關命題：</p>
+<table>
+<thead>
+<tr>
+<th>名稱</th>
+<th>形式</th>
+<th>與原命題的關係</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>原命題</td>
+<td><span class="arithmatex">\(A \rightarrow B\)</span></td>
+<td>—</td>
+</tr>
+<tr>
+<td>逆命題（Converse）</td>
+<td><span class="arithmatex">\(B \rightarrow A\)</span></td>
+<td>不等價</td>
+</tr>
+<tr>
+<td>否命題（Inverse）</td>
+<td><span class="arithmatex">\(\sim A \rightarrow \sim B\)</span></td>
+<td>不等價，但與逆命題互為逆否、彼此等價</td>
+</tr>
+<tr>
+<td>逆否命題（Contrapositive）</td>
+<td><span class="arithmatex">\(\sim B \rightarrow \sim A\)</span></td>
+<td>與原命題等價</td>
+</tr>
+</tbody>
+</table>
+<p>重點：</p>
+<ul>
+<li>逆否命題和原命題<strong>等價</strong>，所以單純改寫成逆否命題不會帶來新資訊，並不是蒙格說的逆向思維。</li>
+<li>蒙格式的逆向思維本質上是<strong>換問題</strong>，把目標反轉為 <span class="arithmatex">\(\sim B\)</span>，然後思考 <span class="arithmatex">\(A_{bad} \rightarrow \sim B\)</span>，而不是對同一個命題做邏輯運算。</li>
+</ul>
+<hr />
+<h2 id="為什麼要換問題a-rightarrow-b-難以證明">為什麼要換問題：<span class="arithmatex">\(A \rightarrow B\)</span> 難以證明<a class="headerlink" href="#為什麼要換問題a-rightarrow-b-難以證明" title="本節的固定連結">&para;</a></h2>
+<h3 id="現實世界不是完美的實驗室">現實世界不是完美的實驗室<a class="headerlink" href="#現實世界不是完美的實驗室" title="本節的固定連結">&para;</a></h3>
+<p>在純數學中，條件滿足時 <span class="arithmatex">\(A \rightarrow B\)</span> 必然成立。但在人生、投資或系統工程中，通往成功的路上充滿運氣、未知變數與黑天鵝事件。每天早起、拼命工作、讀遍投資書籍，不保證財富自由。更重要的是：<strong>現實中的 <span class="arithmatex">\(A \rightarrow B\)</span> 往往是機率問題，而非確定的因果關係。</strong></p>
+<h3 id="失敗的因果關係相對明確">失敗的因果關係相對明確<a class="headerlink" href="#失敗的因果關係相對明確" title="本節的固定連結">&para;</a></h3>
+<p>我們很難保證「做什麼一定成功」，卻常能高度確定「做什麼一定出事」。不知道怎麼寫出零 Bug 的程式，但知道「不寫測試也不做備份」遇到意外時幾乎必然無法挽救。既然 <span class="arithmatex">\(A_{bad} \rightarrow \sim B\)</span> 的確定性高得多，蒙格把精力放在辨識這些致命錯誤上。</p>
+<h3 id="本質確保生存讓成功自然發生">本質：確保生存，讓成功自然發生<a class="headerlink" href="#本質確保生存讓成功自然發生" title="本節的固定連結">&para;</a></h3>
+<p>蒙格逆向思維<strong>不是</strong>為了證明 <span class="arithmatex">\(A \rightarrow B\)</span> 成立，而是承認它無法保證，於是換策略：</p>
+<ul>
+<li>放棄追求「做 <span class="arithmatex">\(A\)</span> 保證得 <span class="arithmatex">\(B\)</span>」；</li>
+<li>改為嚴格執行「不做 <span class="arithmatex">\(A_{bad}\)</span>，避開已知的毀滅路徑」。</li>
+</ul>
+<p>蒙格的原話：</p>
+<blockquote>
+<p>It is remarkable how much long-term advantage people like us have gotten by trying to be consistently not stupid, instead of trying to be very intelligent.（像我們這樣的人能取得長期優勢，靠的不是努力變得非常聰明，而是持續努力不犯蠢。） —《Wesco Financial Corporation 1989 Annual Report》致股東信（1990 年 3 月 5 日）</p>
+</blockquote>
+<p>正向思考是試圖找出一條絕對安全的捷徑，很難而且容易看錯；逆向思維是把所有已知地雷標出來，只要不踩就好。路線可能歪歪扭扭，但只要不被踢出局、留在場上夠久，最終就會抵達終點。這也呼應投資中「先求不敗」與複利需要時間的觀念。</p>
+<hr />
+<h2 id="四種逆向思維方式">四種逆向思維方式<a class="headerlink" href="#四種逆向思維方式" title="本節的固定連結">&para;</a></h2>
+<h3 id="1-核心a_bad-rightarrow-sim-b做什麼會導致失敗">1. 核心：<span class="arithmatex">\(A_{bad} \rightarrow \sim B\)</span>（做什麼會導致失敗）<a class="headerlink" href="#1-核心a_bad-rightarrow-sim-b做什麼會導致失敗" title="本節的固定連結">&para;</a></h3>
+<p>這是蒙格逆向思維的核心。他常引用一句話：</p>
+<blockquote>
+<p>我只想知道我將來會死在什麼地方，這樣我就可以永遠不去那裡。 —《窮查理的普通常識》多元思維模型</p>
+</blockquote>
+<ul>
+<li><strong>正向思考</strong>：尋找行動 <span class="arithmatex">\(A\)</span> 使得 <span class="arithmatex">\(A \rightarrow B\)</span>。但通往成功的變數太多、運氣成分太重，很難保證因果關係。</li>
+<li><strong>逆向思維</strong>：把目標反轉為 <span class="arithmatex">\(\sim B\)</span>，找出哪些具體行為 <span class="arithmatex">\(A_{bad}\)</span> 會高度可靠地導致失敗。</li>
+<li><strong>執行策略</strong>：列出所有 <span class="arithmatex">\(A_{bad}\)</span>（例如：傲慢、嫉妒、過度槓桿、單點故障），行動指南就變成 <span class="arithmatex">\(\sim A_{bad}\)</span>，絕對不要做這些事。</li>
+</ul>
+<h3 id="2-減法策略sim-a_bad-rightarrow-b不做什麼會導致成功">2. 減法策略：<span class="arithmatex">\(\sim A_{bad} \rightarrow B\)</span>（不做什麼會導致成功）<a class="headerlink" href="#2-減法策略sim-a_bad-rightarrow-b不做什麼會導致成功" title="本節的固定連結">&para;</a></h3>
+<p>這接近 Nassim Taleb 推廣的 <strong>Via Negativa（否定之道）</strong>，與蒙格「持續避免犯蠢」的主張相通。成功常常不是來自聰明絕頂的決策，而是來自減少愚蠢的決策：不做多餘的優化、不引入不必要的依賴、不頻繁交易。</p>
+<p>但要注意按字面讀 <span class="arithmatex">\(\sim A_{bad} \rightarrow B\)</span> 是說「不做 <span class="arithmatex">\(A_{bad}\)</span> 就足以成功」，這個主張太強。實務上應理解為「避開 <span class="arithmatex">\(A_{bad}\)</span> 能大幅提高成功機率」，而不是保證成功。</p>
+<h3 id="3-找出必要條件sim-a-rightarrow-sim-b不做什麼會導致失敗">3. 找出必要條件：<span class="arithmatex">\(\sim A \rightarrow \sim B\)</span>（不做什麼會導致失敗）<a class="headerlink" href="#3-找出必要條件sim-a-rightarrow-sim-b不做什麼會導致失敗" title="本節的固定連結">&para;</a></h3>
+<p>這是原命題的<strong>否命題</strong>，邏輯上等價於 <span class="arithmatex">\(B \rightarrow A\)</span>（兩者互為逆否），意思是 <strong><span class="arithmatex">\(A\)</span> 是 <span class="arithmatex">\(B\)</span> 的必要條件</strong>。</p>
+<ul>
+<li>例：「如果不做系統備份（<span class="arithmatex">\(\sim A\)</span>），遇到勒索軟體就會資料全毀（<span class="arithmatex">\(\sim B\)</span>）。」等價於「若要在勒索軟體攻擊後存活（<span class="arithmatex">\(B\)</span>），必須做備份（<span class="arithmatex">\(A\)</span>）。」</li>
+<li>用途：找出「沒做就一定會死」的底線工作，把它們變成標準作業程序（SOP）。投資上的對應例子是緊急預備金、分散配置。</li>
+</ul>
+<h3 id="4-另一種逆向b-rightarrow-a以終為始--逆向推導">4. 另一種逆向：<span class="arithmatex">\(B \rightarrow A\)</span>（以終為始 / 逆向推導）<a class="headerlink" href="#4-另一種逆向b-rightarrow-a以終為始--逆向推導" title="本節的固定連結">&para;</a></h3>
+<p>這是<strong>逆命題</strong>的方向，在工程與問題解決中稱為<strong>以終為始</strong>或 <strong>Backward Chaining（反向推理）</strong>：</p>
+<p>先假設目標 <span class="arithmatex">\(B\)</span> 已達成，往回推：<span class="arithmatex">\(B\)</span> 發生前必須滿足什麼條件 <span class="arithmatex">\(A_1\)</span>？要滿足 <span class="arithmatex">\(A_1\)</span> 又需要 <span class="arithmatex">\(A_2\)</span>？一路推回現在的狀態。</p>
+<p>蒙格常引用數學家卡爾·雅可比（Carl Jacobi）的名言「Invert, always invert」（原文 <em>man muss immer umkehren</em>）：</p>
+<blockquote>
+<p>透過偉大的代數數學家雅各比提倡的逆向思維來思考問題。雅各比說過：「反過來想，總是反過來想。」 —《窮查理的普通常識》第十一講 人類誤判心理學</p>
+</blockquote>
+<p>雅可比原意是把難題換成反向或等價的表述來求解；蒙格則把它延伸為「思考如何失敗」。</p>
+<hr />
+<h2 id="總結一套逆向思維決策流程">總結：一套逆向思維決策流程<a class="headerlink" href="#總結一套逆向思維決策流程" title="本節的固定連結">&para;</a></h2>
+<ol>
+<li><strong>定義毀滅（<span class="arithmatex">\(A_{bad} \rightarrow \sim B\)</span>）</strong>：窮舉會搞砸的致命行為。</li>
+<li><strong>避開毀滅（<span class="arithmatex">\(\sim A_{bad} \rightarrow B\)</span>）</strong>：把「不做這些行為」列為最高原則，靠持續不犯蠢提高成功機率。</li>
+<li><strong>找出底線（<span class="arithmatex">\(\sim A \rightarrow \sim B\)</span>）</strong>：找出沒做就一定會死的基礎工作，變成 SOP。</li>
+<li><strong>以終為始（<span class="arithmatex">\(B \rightarrow A\)</span>）</strong>：想像目標已達成，從終點反推路徑。</li>
+</ol>
+<p>前兩步是蒙格本人強調的逆向思維：第 1 步找出地雷，第 2 步是它的行動結論。後兩步屬於廣義的逆向思維，雅可比的原意比較接近第 4 步。第 3、4 步在邏輯上等價，都在說「<span class="arithmatex">\(A\)</span> 是 <span class="arithmatex">\(B\)</span> 的必要條件」，差別只在思考的起點：第 3 步從失敗出發，第 4 步從目標出發。</p>
+<hr />
+<h2 id="參考資料">參考資料<a class="headerlink" href="#參考資料" title="本節的固定連結">&para;</a></h2>
+<ul>
+<li>Munger, C. T. (1990, March 5). Letter to Shareholders. In <em>Wesco Financial Corporation Annual Report 1989</em>.</li>
+<li><a href="https://quoteinvestigator.com/2025/08/25/not-stupid/">Quote Origin: Trying To Be Consistently Not Stupid Instead of Trying To Be Very Intelligent – Quote Investigator</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Carl_Gustav_Jacob_Jacobi">Carl Gustav Jacob Jacobi – Wikipedia</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+          <div class="md-top" data-md-component="top" hidden>
+  <div class="md-top__center">
+    <button type="button" class="md-top__button md-top__button--main" data-md-action="top">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+      <span>回到頂部</span>
+    </button>
+    
+      
+      
+      <label class="md-top__button md-top__side md-top__side--nav" for="__drawer" >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-panel-left" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg>
+      </label>
+    
+    
+      
+      
+      <label class="md-top__button md-top__side md-top__side--toc" for="__toc" >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-panel-right" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M15 3v18"/></svg>
+      </label>
+    
+  </div>
+</div>
+      </main>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+          
+          
+        
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "code": null, "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.path", "navigation.top", "navigation.tracking", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tooltips"], "search": {"options": {"baseUrl": "../..", "bundleUrl": "../../search/", "highlight": true, "searchOptions": {}}, "provider": "pagefind"}, "tags": null, "translations": {"clipboard.copied": "\u5df2\u62f7\u8c9d", "clipboard.copy": "\u62f7\u8c9d", "code.collapse": "\u6536\u8d77", "code.download": "\u4e0b\u8f09", "code.expand": "\u5c55\u958b\u5269\u4f59 # \u884c", "code.select": "\u5207\u63db\u884c\u9078\u64c7", "search.offline": "\u96e2\u7dda\u641c\u5c0b\u8acb\u5207\u63db\u5230 Lunr", "search.result.more.one": "\u6b64\u9801\u5c1a\u6709 1 \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.more.other": "\u6b64\u9801\u5c1a\u6709 # \u500b\u7b26\u5408\u7684\u9805\u76ee", "search.result.none": "\u6c92\u6709\u627e\u5230\u7b26\u5408\u689d\u4ef6\u7684\u7d50\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u689d\u4ef6\u7684\u7d50\u679c", "search.result.other": "\u627e\u5230 # \u500b\u7b26\u5408\u689d\u4ef6\u7684\u7d50\u679c", "search.result.placeholder": "\u9375\u5165\u4ee5\u958b\u59cb\u6aa2\u7d22", "search.result.term.missing": "\u7f3a\u5931", "select.version": "\u9078\u64c7\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.44453a05.min.js"></script>
+      
+        <script src="../../javascripts/report-iframe.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../assets/document_dates/tippy/popper.min.js"></script>
+      
+        <script src="../../assets/document_dates/tippy/tippy.umd.min.js"></script>
+      
+        <script src="../../assets/document_dates/core/md5.min.js"></script>
+      
+        <script src="../../assets/document_dates/core/default.config.js"></script>
+      
+        <script src="../../assets/document_dates/core/utils.js"></script>
+      
+        <script src="../../assets/document_dates/core/core.js"></script>
+      
+    
+  </body>
+</html>

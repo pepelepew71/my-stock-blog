@@ -12,7 +12,12 @@
     </url>
     <url>
         <loc>https://blog-stock.pewren.cc/posts/</loc>
-        <lastmod>2026-10-07</lastmod>
+        <lastmod>2026-10-26</lastmod>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>https://blog-stock.pewren.cc/posts/munger-inversion/</loc>
+        <lastmod>2026-10-26</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>
